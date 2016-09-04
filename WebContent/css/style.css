@@ -202,7 +202,7 @@ hr{max-width: 50px;
 .box-content.box-style-2{background-color: #fff;}
 
 .box-content.box-1 {}
-.box-content.box-1 .box-item{text-align: center;margin-bottom: 40px; width:300px;border: 2px solid #000; float:left;}
+.box-content.box-1 .box-item{text-align: center;margin-bottom: 40px; width:300px;border: 0px solid #000; float:left;}
 .box-content.box-1 .box-item .wrap-img {background: #FFB246;padding:60px;border-radius:50%;height:220px;width:250px;display:inline-block;}
 .box-content.box-1 .box-item .services-heading {margin: 20px; }
 .box-content.box-1 .box-item h3.services-heading {font-size: 25px; }
