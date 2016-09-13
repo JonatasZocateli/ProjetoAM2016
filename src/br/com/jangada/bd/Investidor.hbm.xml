@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 11/09/2016 19:21:01 by Hibernate Tools 5.1.0.Alpha1 -->
+<hibernate-mapping>
+    <class name="Investidor" table="investidor" catalog="jangada" optimistic-lock="version">
+        <id name="idInvestidor" type="java.lang.Integer">
+            <column name="idInvestidor" />
+            <generator class="identity" />
+        </id>
+        <property name="nomeInvestidor" type="string">
+            <column name="nomeInvestidor" length="70" not-null="true" />
+        </property>
+        <property name="emailInvestidor" type="string">
+            <column name="emailInvestidor" length="200" not-null="true" />
+        </property>
+        <property name="cpfInvestidor" type="string">
+            <column name="cpfInvestidor" length="11" />
+        </property>
+        <property name="cnpjInvestidor" type="string">
+            <column name="cnpjInvestidor" length="14" />
+        </property>
+        <property name="nomeEmpresaInvestidor" type="string">
+            <column name="nomeEmpresaInvestidor" length="70" />
+        </property>
+        <property name="segmentoEmpresaInvestidor" type="string">
+            <column name="segmentoEmpresaInvestidor" length="100" />
+        </property>
+        <property name="cepInvestidor" type="string">
+            <column name="cepInvestidor" length="9" />
+        </property>
+        <property name="logradouroInvestidor" type="string">
+            <column name="logradouroInvestidor" length="70" />
+        </property>
+        <property name="bairroInvestidor" type="string">
+            <column name="bairroInvestidor" length="60" />
+        </property>
+        <property name="cidadeInvestidor" type="string">
+            <column name="cidadeInvestidor" length="60" />
+        </property>
+        <property name="estadoInvestidor" type="string">
+            <column name="estadoInvestidor" length="60" />
+        </property>
+        <property name="paisInvestidor" type="string">
+            <column name="paisInvestidor" length="60" />
+        </property>
+        <property name="ativoInvestidor" type="java.lang.Character">
+            <column name="ativoInvestidor" length="1" />
+        </property>
+        <set name="investimentos" table="investidorinvestimento" inverse="false" lazy="true" fetch="select">
+            <key>
+                <column name="idInvestidor" not-null="true" />
+            </key>
+            <many-to-many entity-name="Investimento">
+                <column name="idInvestimento" not-null="true" />
+            </many-to-many>
+        </set>
+    </class>
+</hibernate-mapping>

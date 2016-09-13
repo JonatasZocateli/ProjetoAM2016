@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 11/09/2016 19:21:01 by Hibernate Tools 5.1.0.Alpha1 -->
+<hibernate-mapping>
+    <class name="Clientes" table="clientes" catalog="jangada" optimistic-lock="version">
+        <id name="idClientes" type="java.lang.Integer">
+            <column name="idClientes" />
+            <generator class="identity" />
+        </id>
+        <property name="nomeCliente" type="string">
+            <column name="nomeCliente" length="80" not-null="true" />
+        </property>
+        <property name="nascimentoCliente" type="date">
+            <column name="nascimentoCliente" length="10" not-null="true" />
+        </property>
+        <property name="emailCliente" type="string">
+            <column name="emailCliente" length="200" not-null="true" />
+        </property>
+        <property name="cpfCliente" type="string">
+            <column name="cpfCliente" length="11" />
+        </property>
+        <property name="cepCliente" type="string">
+            <column name="cepCliente" length="9" />
+        </property>
+        <property name="logradouroCliente" type="string">
+            <column name="logradouroCliente" length="70" />
+        </property>
+        <property name="bairroCliente" type="string">
+            <column name="bairroCliente" length="60" />
+        </property>
+        <property name="cidadeCliente" type="string">
+            <column name="cidadeCliente" length="60" />
+        </property>
+        <property name="paisCliente" type="string">
+            <column name="paisCliente" length="60" />
+        </property>
+        <property name="ativoCliente" type="java.lang.Character">
+            <column name="ativoCliente" length="1" />
+        </property>
+    </class>
+</hibernate-mapping>

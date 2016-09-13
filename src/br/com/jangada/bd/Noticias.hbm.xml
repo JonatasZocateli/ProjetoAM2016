@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 11/09/2016 19:21:01 by Hibernate Tools 5.1.0.Alpha1 -->
+<hibernate-mapping>
+    <class name="Noticias" table="noticias" catalog="jangada" optimistic-lock="version">
+        <id name="idNoticias" type="java.lang.Integer">
+            <column name="idNoticias" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="administador" class="Administador" fetch="select">
+            <column name="idAdministrador" />
+        </many-to-one>
+        <property name="tituloNoticia" type="string">
+            <column name="tituloNoticia" length="100" not-null="true" />
+        </property>
+        <property name="subtituloNoticia" type="string">
+            <column name="subtituloNoticia" length="50" not-null="true" />
+        </property>
+        <property name="conteudoNoticia" type="binary">
+            <column name="conteudoNoticia" />
+        </property>
+        <property name="urlImagem" type="string">
+            <column name="urlImagem" length="200" />
+        </property>
+        <property name="dataHoraNoticia" type="timestamp">
+            <column name="dataHoraNoticia" length="19" />
+        </property>
+        <property name="ativoNoticia" type="java.lang.Character">
+            <column name="ativoNoticia" length="1" />
+        </property>
+    </class>
+</hibernate-mapping>
