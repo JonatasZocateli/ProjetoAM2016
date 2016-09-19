@@ -2,12 +2,14 @@ package br.com.jangada.dao;
 // Generated 11/09/2016 22:05:50 by Hibernate Tools 5.1.0.Alpha1
 
 import java.util.List;
-import javax.naming.InitialContext;
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.hibernate.LockMode;
 import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
 import org.hibernate.criterion.Example;
+
 
 import br.com.jangada.bd.Clientes;
 
@@ -20,11 +22,12 @@ public class ClientesHome {
 
 	private static final Log log = LogFactory.getLog(ClientesHome.class);
 
-	private final SessionFactory sessionFactory = getSessionFactory();
+	private SessionFactory sessionFactory = getSessionFactory();
 
-	protected SessionFactory getSessionFactory() {
+		protected SessionFactory getSessionFactory() {
 		try {
-			return (SessionFactory) new InitialContext().lookup("SessionFactory");
+			//return (SessionFactory) new InitialContext().lookup("SessionFactory");
+			return new Configuration().configure("/resources/hibernate.cfg.xml").buildSessionFactory();
 		} catch (Exception e) {
 			log.error("Could not locate SessionFactory in JNDI", e);
 			throw new IllegalStateException("Could not locate SessionFactory in JNDI");
@@ -34,7 +37,10 @@ public class ClientesHome {
 	public void persist(Clientes transientInstance) {
 		log.debug("persisting Clientes instance");
 		try {
+			sessionFactory.getCurrentSession().beginTransaction();
 			sessionFactory.getCurrentSession().persist(transientInstance);
+			sessionFactory.getCurrentSession().beginTransaction().commit();
+			
 			log.debug("persist successful");
 		} catch (RuntimeException re) {
 			log.error("persist failed", re);

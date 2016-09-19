@@ -3,7 +3,7 @@
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <!-- Generated 11/09/2016 19:21:01 by Hibernate Tools 5.1.0.Alpha1 -->
 <hibernate-mapping>
-    <class name="Clientes" table="clientes" catalog="jangada" optimistic-lock="version">
+    <class name="br.com.jangada.bd.Clientes" table="clientes" catalog="jangada" optimistic-lock="version">
         <id name="idClientes" type="java.lang.Integer">
             <column name="idClientes" />
             <generator class="identity" />
@@ -31,6 +31,9 @@
         </property>
         <property name="cidadeCliente" type="string">
             <column name="cidadeCliente" length="60" />
+        </property>
+        <property name="estadoCliente" type="string">
+            <column name="estadoCliente" length="2" />
         </property>
         <property name="paisCliente" type="string">
             <column name="paisCliente" length="60" />
