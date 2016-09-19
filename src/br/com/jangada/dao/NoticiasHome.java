@@ -7,6 +7,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.hibernate.LockMode;
 import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
 import org.hibernate.criterion.Example;
 
 import br.com.jangada.bd.Noticias;
@@ -24,7 +25,8 @@ public class NoticiasHome {
 
 	protected SessionFactory getSessionFactory() {
 		try {
-			return (SessionFactory) new InitialContext().lookup("SessionFactory");
+			//return (SessionFactory) new InitialContext().lookup("SessionFactory");
+			return new Configuration().configure("/resources/hibernate.cfg.xml").buildSessionFactory();
 		} catch (Exception e) {
 			log.error("Could not locate SessionFactory in JNDI", e);
 			throw new IllegalStateException("Could not locate SessionFactory in JNDI");
@@ -34,7 +36,10 @@ public class NoticiasHome {
 	public void persist(Noticias transientInstance) {
 		log.debug("persisting Noticias instance");
 		try {
+			sessionFactory.getCurrentSession().beginTransaction();
 			sessionFactory.getCurrentSession().persist(transientInstance);
+			sessionFactory.getCurrentSession().beginTransaction().commit();
+			
 			log.debug("persist successful");
 		} catch (RuntimeException re) {
 			log.error("persist failed", re);

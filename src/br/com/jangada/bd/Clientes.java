@@ -18,6 +18,7 @@ public class Clientes implements java.io.Serializable {
 	private String logradouroCliente;
 	private String bairroCliente;
 	private String cidadeCliente;
+	private String estadoCliente;
 	private String paisCliente;
 	private Character ativoCliente;
 
@@ -31,7 +32,7 @@ public class Clientes implements java.io.Serializable {
 	}
 
 	public Clientes(String nomeCliente, Date nascimentoCliente, String emailCliente, String cpfCliente,
-			String cepCliente, String logradouroCliente, String bairroCliente, String cidadeCliente, String paisCliente,
+			String cepCliente, String logradouroCliente, String bairroCliente, String estadoCliente, String cidadeCliente, String paisCliente,
 			Character ativoCliente) {
 		this.nomeCliente = nomeCliente;
 		this.nascimentoCliente = nascimentoCliente;
@@ -41,6 +42,7 @@ public class Clientes implements java.io.Serializable {
 		this.logradouroCliente = logradouroCliente;
 		this.bairroCliente = bairroCliente;
 		this.cidadeCliente = cidadeCliente;
+		this.estadoCliente = estadoCliente;
 		this.paisCliente = paisCliente;
 		this.ativoCliente = ativoCliente;
 	}
@@ -131,6 +133,14 @@ public class Clientes implements java.io.Serializable {
 
 	public void setAtivoCliente(Character ativoCliente) {
 		this.ativoCliente = ativoCliente;
+	}
+
+	public String getEstadoCliente() {
+		return estadoCliente;
+	}
+
+	public void setEstadoCliente(String estadoCliente) {
+		this.estadoCliente = estadoCliente;
 	}
 
 }

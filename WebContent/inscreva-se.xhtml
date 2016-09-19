@@ -60,22 +60,31 @@
 				  <div class="col-md-4">
 				  
 				  <h:inputText 
-				     value="#{cadastrarCliente.cliente.nomeClientes}"
-				     id="nomeClientes" 
+				     value="#{clientesMB.cliente.nomeCliente}"
+				     id="nomeCliente" 
 				     required="true"
 				     requiredMessage="Por favor, preencha o Nome completo"
 				     class="form-control input-md">
-				     </h:inputText>
-				  
-				  <span class="help-block"></span>  
+				     </h:inputText>		  
+				     <h:message for="nomeCliente" style="color:red"/>
+				  <span class="help-block" ></span>  
 				  </div>
 				</div>
 				
 				<!-- Text input-->
-				<div class="form-group">
+				<div class="form-group">				
 				  <label class="col-md-4 control-label" for="textinput">Data de Nascimento</label>  
 				  <div class="col-md-4">
-				  <input id="nascimentoCliente" name="textinput" type="date" placeholder="" class="form-control input-mn"/>
+				  <h:inputText
+				     value="#{clientesMB.cliente.nascimentoCliente}"
+				     id="nascimentoCliente"	
+				     required="true"
+				     requiredMessage="Por favor, preencha a data de nascimento"
+				     converterMessage="A data informada não é valida exemplo: 07/01/2016"	      
+				     class="form-control input-md">
+				     <f:convertDateTime pattern="dd/MM/yyyy" />
+				     </h:inputText>			
+				     <h:message for="nascimentoCliente" style="color:red"/> 	 
 				  <span class="help-block"></span>  
 				  </div>
 				</div>
@@ -83,8 +92,19 @@
 				<!-- Text input-->
 				<div class="form-group">
 				  <label class="col-md-4 control-label" for="textinput">CPF</label>  
-				  <div class="col-md-4">
-				  <input id="cpfCliente" name="textinput" type="text" placeholder="" class="form-control input-md"/>
+				  <div class="col-md-4">				  
+				  <h:inputText 
+				     value="#{clientesMB.cliente.cpfCliente}"
+				     id="cpfCliente" 
+				     required="true"
+				     requiredMessage="Por favor, preencha o CPF"
+				     validatorMessage="O CPF deve ter 11 caracteres!"
+				     converterMessage="O CPF deve contar apenas números"
+				     class="form-control input-md">
+				     <f:convertNumber type="number"/>
+				     <f:validateLength minimum="11" maximum="11"/>				     
+				     </h:inputText>		  
+				     <h:message for="cpfCliente" style="color:red"/> 			  
 				  <span class="help-block"></span>  
 				  </div>
 				</div>
@@ -93,7 +113,13 @@
 				<div class="form-group">
 				  <label class="col-md-4 control-label" for="textinput">Email</label>  
 				  <div class="col-md-4">
-				  <input id="emailCliente" name="textinput" type="text" placeholder="" class="form-control input-md"/>
+				  <h:inputText 
+				     value="#{clientesMB.cliente.emailCliente}"
+				     id="emailCliente" 
+				     required="true"
+				     requiredMessage="Por favor, preencha o email"
+				     class="form-control input-md">
+				     </h:inputText>
 				  <span class="help-block"></span>  
 				  </div>
 				</div>
@@ -101,8 +127,19 @@
 				<!-- Text input-->
 				<div class="form-group">
 				  <label class="col-md-4 control-label" for="textinput">CEP</label>  
-				  <div class="col-md-4">
-				  <input id="cepCliente" name="textinput" type="text" placeholder="" class="form-control input-md"/>
+				  <div class="col-md-4">				  
+				  <h:inputText 
+				     value="#{clientesMB.cliente.cepCliente}"
+				     id="cepCliente" 
+				     required="true"
+				     requiredMessage="Por favor, preencha o CPF"
+				     validatorMessage="O CEP deve ter 8 caracteres exemplo 08123-122"
+				     converterMessage="CEP fora do padrão exemplo 08123122"
+				     class="form-control input-md">
+				     <f:convertNumber type="number"/>
+				     <f:validateLength minimum="8" maximum="8"/>				     
+				     </h:inputText>		  
+				     <h:message for="cepCliente" style="color:red"/> 
 				  <span class="help-block"></span>  
 				  </div>
 				</div>
@@ -111,7 +148,11 @@
 				<div class="form-group">
 				  <label class="col-md-4 control-label" for="textinput">Logradouro</label>  
 				  <div class="col-md-4">
-				  <input id="logradouroCliente" name="textinput" type="text" placeholder="" class="form-control input-md"/>
+				  <h:inputText 
+				     value="#{clientesMB.cliente.logradouroCliente}"
+				     id="logradouroCliente" 
+				     class="form-control input-md">
+				     </h:inputText>		  
 				  <span class="help-block"></span>  
 				  </div>
 				</div>
@@ -119,8 +160,12 @@
 				<!-- Text input-->
 				<div class="form-group">
 				  <label class="col-md-4 control-label" for="textinput">Bairro</label>  
-				  <div class="col-md-4">
-				  <input id="bairroCliente" name="textinput" type="text" placeholder="" class="form-control input-md"/>
+				  <div class="col-md-4">				  
+				  <h:inputText 
+				     value="#{clientesMB.cliente.bairroCliente}"
+				     id="bairroCliente" 
+				     class="form-control input-md">
+				     </h:inputText>	
 				  <span class="help-block"></span>  
 				  </div>
 				</div>
@@ -129,7 +174,11 @@
 				<div class="form-group">
 				  <label class="col-md-4 control-label" for="textinput">Cidade</label>  
 				  <div class="col-md-4">
-				  <input id="cidadeCliente" name="textinput" type="text" placeholder="" class="form-control input-md"/>
+				  <h:inputText 
+				     value="#{clientesMB.cliente.cidadeCliente}"
+				     id="cidadeCliente" 
+				     class="form-control input-md">
+				     </h:inputText>
 				  <span class="help-block"></span>  
 				  </div>
 				</div>
@@ -137,8 +186,14 @@
 				<!-- Text input-->
 				<div class="form-group">
 				  <label class="col-md-4 control-label" for="textinput">Estado/Província</label>  
-				  <div class="col-md-4">
-				  <input id="estadoCliente" name="textinput" type="text" placeholder="" class="form-control input-md"/>
+				  <div class="col-md-4">				  
+				  <h:inputText 
+				     value="#{clientesMB.cliente.estadoCliente}"
+				     id="estadoCliente" 
+				     class="form-control input-md">
+				     <f:validateLength minimum="2" maximum="2"/>
+				     </h:inputText>
+				     <h:message for="estadoCliente" style="color:red"/> 
 				  <span class="help-block"></span>  
 				  </div>
 				</div>
@@ -146,8 +201,12 @@
 				<!-- Text input-->
 				<div class="form-group">
 				  <label class="col-md-4 control-label" for="textinput">País</label>  
-				  <div class="col-md-4">
-				  <input id="paisCliente" name="textinput" type="text" placeholder="" class="form-control input-md"/>
+				  <div class="col-md-4">				  
+				  <h:inputText 
+				     value="#{clientesMB.cliente.paisCliente}"
+				     id="paisCliente" 
+				     class="form-control input-md">
+				     </h:inputText>
 				  <span class="help-block"></span>  
 				  </div>
 				</div>
