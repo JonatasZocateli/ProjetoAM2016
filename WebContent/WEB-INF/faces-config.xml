@@ -17,4 +17,14 @@
 		  <managed-bean-class>br.com.jangada.managedbean.CadastrarCliente</managed-bean-class>
 		  <managed-bean-scope>request</managed-bean-scope>	
 	</managed-bean>
+	<managed-bean>
+		<managed-bean-name>investidorMB</managed-bean-name>
+		  <managed-bean-class>br.com.jangada.managedbean.CadastrarInvestidor</managed-bean-class>
+		  <managed-bean-scope>request</managed-bean-scope>	
+	</managed-bean>
+	<managed-bean>
+		<managed-bean-name>administradorMB</managed-bean-name>
+		  <managed-bean-class>br.com.jangada.managedbean.CadastrarAdministrador</managed-bean-class>
+		  <managed-bean-scope>request</managed-bean-scope>	
+	</managed-bean>
 </faces-config>

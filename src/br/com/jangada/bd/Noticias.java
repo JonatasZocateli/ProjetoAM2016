@@ -10,7 +10,7 @@ import java.util.Date;
 public class Noticias implements java.io.Serializable {
 
 	private Integer idNoticias;
-	private Administador administador;
+	private Administrador administador;
 	private String tituloNoticia;
 	private String subtituloNoticia;
 	private byte[] conteudoNoticia;
@@ -26,7 +26,7 @@ public class Noticias implements java.io.Serializable {
 		this.subtituloNoticia = subtituloNoticia;
 	}
 
-	public Noticias(Administador administador, String tituloNoticia, String subtituloNoticia, byte[] conteudoNoticia,
+	public Noticias(Administrador administador, String tituloNoticia, String subtituloNoticia, byte[] conteudoNoticia,
 			String urlImagem, Date dataHoraNoticia, Character ativoNoticia) {
 		this.administador = administador;
 		this.tituloNoticia = tituloNoticia;
@@ -45,11 +45,11 @@ public class Noticias implements java.io.Serializable {
 		this.idNoticias = idNoticias;
 	}
 
-	public Administador getAdministador() {
+	public Administrador getAdministador() {
 		return this.administador;
 	}
 
-	public void setAdministador(Administador administador) {
+	public void setAdministador(Administrador administador) {
 		this.administador = administador;
 	}
 

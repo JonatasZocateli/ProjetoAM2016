@@ -2,6 +2,7 @@ package br.com.jangada.bd;
 // default package
 // Generated 11/09/2016 19:21:00 by Hibernate Tools 5.1.0.Alpha1
 
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -23,21 +24,23 @@ public class Investidor implements java.io.Serializable {
 	private String cidadeInvestidor;
 	private String estadoInvestidor;
 	private String paisInvestidor;
+	private Date nascimentoInvestidor;
 	private Character ativoInvestidor;
 	private Set<Investimento> investimentos = new HashSet<Investimento>(0);
 
 	public Investidor() {
 	}
 
-	public Investidor(String nomeInvestidor, String emailInvestidor) {
+	public Investidor(String nomeInvestidor, String emailInvestidor, Date nascimentoInvestidor) {
 		this.nomeInvestidor = nomeInvestidor;
 		this.emailInvestidor = emailInvestidor;
+		this.nascimentoInvestidor =  nascimentoInvestidor;
 	}
 
 	public Investidor(String nomeInvestidor, String emailInvestidor, String cpfInvestidor, String cnpjInvestidor,
 			String nomeEmpresaInvestidor, String segmentoEmpresaInvestidor, String cepInvestidor,
 			String logradouroInvestidor, String bairroInvestidor, String cidadeInvestidor, String estadoInvestidor,
-			String paisInvestidor, Character ativoInvestidor, Set<Investimento> investimentos) {
+			String paisInvestidor, Character ativoInvestidor, Set<Investimento> investimentos, Date nascimentoInvestidor) {
 		this.nomeInvestidor = nomeInvestidor;
 		this.emailInvestidor = emailInvestidor;
 		this.cpfInvestidor = cpfInvestidor;
@@ -52,6 +55,7 @@ public class Investidor implements java.io.Serializable {
 		this.paisInvestidor = paisInvestidor;
 		this.ativoInvestidor = ativoInvestidor;
 		this.investimentos = investimentos;
+		this.nascimentoInvestidor = nascimentoInvestidor;
 	}
 
 	public Integer getIdInvestidor() {
@@ -172,6 +176,14 @@ public class Investidor implements java.io.Serializable {
 
 	public void setInvestimentos(Set<Investimento> investimentos) {
 		this.investimentos = investimentos;
+	}
+
+	public Date getNascimentoInvestidor() {
+		return nascimentoInvestidor;
+	}
+
+	public void setNascimentoInvestidor(Date nascimentoInvestidor) {
+		this.nascimentoInvestidor = nascimentoInvestidor;
 	}
 
 }

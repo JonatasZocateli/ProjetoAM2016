@@ -10,7 +10,7 @@ import java.util.Date;
 public class Logs implements java.io.Serializable {
 
 	private Integer idLogs;
-	private Administador administador;
+	private Administrador administador;
 	private String acaoLogs;
 	private String tabelaLogs;
 	private int registroLogs;
@@ -19,7 +19,7 @@ public class Logs implements java.io.Serializable {
 	public Logs() {
 	}
 
-	public Logs(Administador administador, String acaoLogs, String tabelaLogs, int registroLogs, Date dataHoraLogs) {
+	public Logs(Administrador administador, String acaoLogs, String tabelaLogs, int registroLogs, Date dataHoraLogs) {
 		this.administador = administador;
 		this.acaoLogs = acaoLogs;
 		this.tabelaLogs = tabelaLogs;
@@ -35,11 +35,11 @@ public class Logs implements java.io.Serializable {
 		this.idLogs = idLogs;
 	}
 
-	public Administador getAdministador() {
+	public Administrador getAdministador() {
 		return this.administador;
 	}
 
-	public void setAdministador(Administador administador) {
+	public void setAdministador(Administrador administador) {
 		this.administador = administador;
 	}
 

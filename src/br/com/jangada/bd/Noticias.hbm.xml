@@ -3,12 +3,12 @@
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <!-- Generated 11/09/2016 19:21:01 by Hibernate Tools 5.1.0.Alpha1 -->
 <hibernate-mapping>
-    <class name="Noticias" table="noticias" catalog="jangada" optimistic-lock="version">
+    <class name="br.com.jangada.bd.Noticias" table="noticias" catalog="jangada" optimistic-lock="version">
         <id name="idNoticias" type="java.lang.Integer">
             <column name="idNoticias" />
             <generator class="identity" />
         </id>
-        <many-to-one name="administador" class="Administador" fetch="select">
+        <many-to-one name="administador" class="br.com.jangada.bd.Administrador" fetch="select">
             <column name="idAdministrador" />
         </many-to-one>
         <property name="tituloNoticia" type="string">

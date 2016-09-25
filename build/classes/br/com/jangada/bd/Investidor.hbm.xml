@@ -3,7 +3,7 @@
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <!-- Generated 11/09/2016 19:21:01 by Hibernate Tools 5.1.0.Alpha1 -->
 <hibernate-mapping>
-    <class name="Investidor" table="investidor" catalog="jangada" optimistic-lock="version">
+    <class name="br.com.jangada.bd.Investidor" table="investidor" catalog="jangada" optimistic-lock="version">
         <id name="idInvestidor" type="java.lang.Integer">
             <column name="idInvestidor" />
             <generator class="identity" />
@@ -44,6 +44,9 @@
         <property name="paisInvestidor" type="string">
             <column name="paisInvestidor" length="60" />
         </property>
+        <property name="nascimentoInvestidor" type="date">
+            <column name="nascimentoInvestidor" length="10" not-null="true" />
+        </property>
         <property name="ativoInvestidor" type="java.lang.Character">
             <column name="ativoInvestidor" length="1" />
         </property>
@@ -51,7 +54,7 @@
             <key>
                 <column name="idInvestidor" not-null="true" />
             </key>
-            <many-to-many entity-name="Investimento">
+            <many-to-many entity-name="br.com.jangada.bd.Investimento">
                 <column name="idInvestimento" not-null="true" />
             </many-to-many>
         </set>

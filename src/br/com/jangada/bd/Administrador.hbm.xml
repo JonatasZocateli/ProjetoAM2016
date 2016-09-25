@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 11/09/2016 19:21:01 by Hibernate Tools 5.1.0.Alpha1 -->
+<hibernate-mapping>
+    <class name="br.com.jangada.bd.Administrador" table="administrador" catalog="jangada" optimistic-lock="version">
+        <id name="idAdministrador" type="java.lang.Integer">
+            <column name="idAdministador" />
+            <generator class="identity" />
+        </id>
+        <property name="email" type="string">
+            <column name="email" length="200" not-null="true" />
+        </property>
+        <property name="loginAdministrador" type="string">
+            <column name="loginAdministrador" length="45" not-null="true" />
+        </property>
+        <property name="senhaAdministrador" type="string">
+            <column name="senhaAdministrador" length="12" not-null="true" />
+        </property>
+        <property name="ativoAdministrador" type="java.lang.Character">
+            <column name="ativoAdministrador" length="1" />
+        </property>
+        <set name="logses" table="logs" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idAdministrador" not-null="true" />
+            </key>
+            <one-to-many class="br.com.jangada.bd.Logs" />
+        </set>
+        <set name="noticiases" table="noticias" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idAdministrador" />
+            </key>
+            <one-to-many class="br.com.jangada.bd.Noticias" />
+        </set>
+    </class>
+</hibernate-mapping>

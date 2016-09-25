@@ -43,7 +43,7 @@
 		</f:view>
 	</header>		
 		<section class="box-content box-style-1">
-			<form class="form-horizontal">
+			<h:form class="form-horizontal">
 				<fieldset>				
 				<!-- Form Name -->
 				<div class="row heading">
@@ -57,8 +57,15 @@
 				<!-- Text input-->
 				<div class="form-group">
 				  <label class="col-md-4 control-label" for="textinput">Nome Completo</label>  
-				  <div class="col-md-4">
-				  <input id="textinput" name="textinput" type="text" placeholder="" class="form-control input-md" />
+				  <div class="col-md-4">				  
+				  <h:inputText 
+				     value="#{investidorMB.investidor.nomeInvestidor}"
+				     id="nomeInvestidor" 
+				     required="true"
+				     requiredMessage="Por favor, preencha o Nome completo"
+				     class="form-control input-md">
+				     </h:inputText>		  
+				     <h:message for="nomeInvestidor" style="color:red"/>
 				  <span class="help-block"></span>  
 				  </div>
 				</div>
@@ -67,7 +74,15 @@
 				<div class="form-group">
 				  <label class="col-md-4 control-label" for="textinput">Empresa</label>  
 				  <div class="col-md-4">
-				  <input id="textinput" name="textinput" type="text" placeholder="" class="form-control input-md" />
+				  <h:inputText 
+				     value="#{investidorMB.investidor.nomeEmpresaInvestidor}"
+				     id="nomeEmpresaInvestidor" 
+				     required="true"
+				     requiredMessage="Por favor, preencha a Razão Social da Empresa"
+				     class="form-control input-md">
+				     </h:inputText>		  
+				     <h:message for="nomeEmpresaInvestidor" style="color:red"/>
+				  <span class="help-block"></span>
 				  <span class="help-block"></span>  
 				  </div>
 				</div>
@@ -75,42 +90,15 @@
 				<!-- Select Basic -->
 				<div class="form-group">
 				  <label class="col-md-4 control-label" for="selectbasic">Segmento</label>
-				  <div class="col-md-4">
-				    <select id="selectbasic" name="selectbasic" class="form-control">
-				      <option value="1">Agropecuária</option>
-				      <option value="2">Água, gás e saneamento</option>
-				      <option value="2">Alimentos processados</option>
-				      <option value="2">Bancos</option>
-				      <option value="2">Carnes e derivados</option>
-				      <option value="2">Construção civil e intermediação</option>
-				      <option value="2">Construção pesada e engenharia</option>
-				      <option value="2">Energia elétrica</option>
-				      <option value="2">Equipamentos, máquinas e peças</option>
-				      <option value="2">Holdings</option>
-				      <option value="2">Hotelaria e Restaurantes</option>
-				      <option value="2">Imóveis comerciais e shoppings</option>
-				      <option value="2">Indústrias de alimentos</option>
-				      <option value="2">Indústrias em geral </option>
-				      <option value="2">Materiais diversos</option>
-				      <option value="2">Mineração</option>
-				      <option value="2">Negócios de lazer e eventos</option>
-				      <option value="2">Papel e madeira</option>
-				      <option value="2">Petróleo, gás e combustíveis</option>
-				      <option value="2">Química e petroquímica</option>
-				      <option value="2">Roupas, calçados e acessórios</option>
-				      <option value="2">Serviços diversos</option>
-				      <option value="2">Setor de educação</option>
-				      <option value="2">Setor de saúde</option>
-				      <option value="2">Setor de seguros</option>
-				      <option value="2">Setor de transporte</option>
-				      <option value="2">Siderurgia e metalurgia</option>
-				      <option value="2">Tecnologia da informação</option>
-				      <option value="2">Telecomunicações</option>
-				      <option value="2">Têxteis</option>
-				      <option value="2">Utilidades domésticas</option>
-				      <option value="2">Varejo</option>				      				      				      				     
-				    </select>
-				      
+				  <div class="col-md-4">				    
+				    <h:inputText 
+				     value="#{investidorMB.investidor.segmentoEmpresaInvestidor}"
+				     id="segmentoEmpresaInvestidor" 
+				     required="true"
+				     requiredMessage="Por favor, informe o segmento da Empresa"
+				     class="form-control input-md">
+				     </h:inputText>		  
+				     <h:message for="segmentoEmpresaInvestidor" style="color:red"/> 
 				  </div>
 				</div>
 				
@@ -118,25 +106,37 @@
 				<div class="form-group">
 				  <label class="col-md-4 control-label" for="textinput">Data de Nascimento</label>  
 				  <div class="col-md-4">
-				  <input id="textinput" name="textinput" type="date" placeholder="" class="form-control input-mn"/>
+				  	 <h:inputText
+				     	value="#{investidorMB.investidor.nascimentoInvestidor}"
+				     	id="nascimentoInvestidor"	
+				     	required="true"
+				     	requiredMessage="Por favor, preencha a data de nascimento"
+				     	converterMessage="A data informada não é valida exemplo: 07/01/2016"	      
+				     	class="form-control input-md">
+				     <f:convertDateTime pattern="dd/MM/yyyy" />
+				     </h:inputText>			
+				     <h:message for="nascimentoInvestidor" style="color:red"/> 
 				  <span class="help-block"></span>  
 				  </div>
-				</div>
+				</div>		
 				
-				<!-- Text input-->
-				<div class="form-group">
-				  <label class="col-md-4 control-label" for="textinput">Email</label>  
-				  <div class="col-md-4">
-				  <input id="textinput" name="textinput" type="text" placeholder="" class="form-control input-md"/>
-				  <span class="help-block"></span>  
-				  </div>
-				</div>
 				
 				<!-- Text input-->
 				<div class="form-group">
 				  <label class="col-md-4 control-label" for="textinput">CPF</label>  
 				  <div class="col-md-4">
-				  <input id="textinput" name="textinput" type="text" placeholder="" class="form-control input-md"/>
+				  <h:inputText 
+				     value="#{investidorMB.investidor.cpfInvestidor}"
+				     id="cpfInvestidor" 
+				     required="true"
+				     requiredMessage="Por favor, preencha o CPF"
+				     validatorMessage="O CPF deve ter 11 caracteres!"
+				     converterMessage="O CPF deve contar apenas números"
+				     class="form-control input-md">
+				     <f:convertNumber type="number"/>
+				     <f:validateLength minimum="11" maximum="11"/>				     
+				     </h:inputText>		  
+				     <h:message for="cpfInvestidor" style="color:red"/> 
 				  <span class="help-block"></span>  
 				  </div>
 				</div>
@@ -145,7 +145,14 @@
 				<div class="form-group">
 				  <label class="col-md-4 control-label" for="textinput">Email</label>  
 				  <div class="col-md-4">
-				  <input id="textinput" name="textinput" type="text" placeholder="" class="form-control input-md"/>
+				  <h:inputText 
+				     value="#{investidorMB.investidor.emailInvestidor}"
+				     id="emailInvestidor" 
+				     required="true"
+				     requiredMessage="Por favor, preencha o email"
+				     class="form-control input-md">
+				     </h:inputText>
+				     <h:message for="emailInvestidor" style="color:red"/>
 				  <span class="help-block"></span>  
 				  </div>
 				</div>
@@ -154,16 +161,32 @@
 				<div class="form-group">
 				  <label class="col-md-4 control-label" for="textinput">CEP</label>  
 				  <div class="col-md-4">
-				  <input id="textinput" name="textinput" type="text" placeholder="" class="form-control input-md"/>
+				  <h:inputText 
+				     value="#{investidorMB.investidor.cepInvestidor}"
+				     id="cepInvestidor" 
+				     required="true"
+				     requiredMessage="Por favor, preencha o CPF"
+				     validatorMessage="O CEP deve ter 8 caracteres exemplo 08123-122"
+				     converterMessage="CEP fora do padrão exemplo 08123122"
+				     class="form-control input-md">
+				     <f:convertNumber type="number"/>
+				     <f:validateLength minimum="8" maximum="8"/>				     
+				     </h:inputText>		  
+				     <h:message for="cepInvestidor" style="color:red"/> 
 				  <span class="help-block"></span>  
 				  </div>
 				</div>
+				
 				
 				<!-- Text input-->
 				<div class="form-group">
 				  <label class="col-md-4 control-label" for="textinput">Logradouro</label>  
 				  <div class="col-md-4">
-				  <input id="textinput" name="textinput" type="text" placeholder="" class="form-control input-md"/>
+				  <h:inputText 
+				     value="#{investidorMB.investidor.logradouroInvestidor}"
+				     id="logradouroInvestidor" 
+				     class="form-control input-md">
+				     </h:inputText>		
 				  <span class="help-block"></span>  
 				  </div>
 				</div>
@@ -172,7 +195,12 @@
 				<div class="form-group">
 				  <label class="col-md-4 control-label" for="textinput">Bairro</label>  
 				  <div class="col-md-4">
-				  <input id="textinput" name="textinput" type="text" placeholder="" class="form-control input-md"/>
+				  <h:inputText 
+				     value="#{investidorMB.investidor.bairroInvestidor}"
+				     id="bairroInvestidor" 
+				     class="form-control input-md">
+				     </h:inputText>	
+				  
 				  <span class="help-block"></span>  
 				  </div>
 				</div>
@@ -181,16 +209,24 @@
 				<div class="form-group">
 				  <label class="col-md-4 control-label" for="textinput">Cidade</label>  
 				  <div class="col-md-4">
-				  <input id="textinput" name="textinput" type="text" placeholder="" class="form-control input-md"/>
+				  <h:inputText 
+				     value="#{investidorMB.investidor.cidadeInvestidor}"
+				     id="cidadeInvestidor" 
+				     class="form-control input-md">
+				     </h:inputText>	
 				  <span class="help-block"></span>  
 				  </div>
 				</div>
 				
 				<!-- Text input-->
 				<div class="form-group">
-				  <label class="col-md-4 control-label" for="textinput">Estado/Província</label>  
+				  <label class="col-md-4 control-label" for="textinput">Estado</label>  
 				  <div class="col-md-4">
-				  <input id="textinput" name="textinput" type="text" placeholder="" class="form-control input-md"/>
+				  <h:inputText 
+				     value="#{investidorMB.investidor.estadoInvestidor}"
+				     id="estadoInvestidor" 
+				     class="form-control input-md">
+				     </h:inputText>	
 				  <span class="help-block"></span>  
 				  </div>
 				</div>
@@ -199,7 +235,11 @@
 				<div class="form-group">
 				  <label class="col-md-4 control-label" for="textinput">País</label>  
 				  <div class="col-md-4">
-				  <input id="textinput" name="textinput" type="text" placeholder="" class="form-control input-md"/>
+				  <h:inputText 
+				     value="#{investidorMB.investidor.paisInvestidor}"
+				     id="paisInvestidor" 
+				     class="form-control input-md">
+				     </h:inputText>	
 				  <span class="help-block"></span>  
 				  </div>
 				</div>
@@ -207,8 +247,10 @@
 				<!-- Text input-->
 				<div class="form-group">
 				  <label class="col-md-4 control-label" for="textinput"></label>  
-				  <div class="col-md-4">
-				  <a class="btn btn-skin" href="confirmacao.jsf">Pronto</a>
+				  <div class="col-md-4">				  
+				  <h:commandButton class="btn btn-skin" 
+				                   value="Pronto" 
+				                   action="#{investidorMB.incluirInvestidor}" ></h:commandButton>
 				  <span class="help-block"></span>  
 				  </div>
 				</div>
@@ -221,7 +263,7 @@
 				</fieldset>
 				
 				
-			</form>				
+			</h:form>				
 		</section>		
 	</div>
 	
