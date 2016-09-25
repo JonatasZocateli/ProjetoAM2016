@@ -12,23 +12,11 @@
   <property name="hibernate.current_session_context_class">thread</property>
   <property name="hibernate.format_sql">false</property>
   <property name="hbm2ddl.auto">update</property>
-<<<<<<< HEAD:src/resources/hibernate.cfg.xml
    <mapping resource="br/com/jangada/bd/Clientes.hbm.xml"/>
    <mapping resource="br/com/jangada/bd/Investidor.hbm.xml"/>
    <mapping resource="br/com/jangada/bd/Investimento.hbm.xml"/> 
    <mapping resource="br/com/jangada/bd/Administrador.hbm.xml"/>
    <mapping resource="br/com/jangada/bd/Noticias.hbm.xml"/>
-   <mapping resource="br/com/jangada/bd/Logs.hbm.xml"/>   
-=======
-  <mapping resource="br/com/jangada/bd/Clientes.hbm.xml"/>
-   <mapping class="br.com.jangada.bd.Investidor"
-   package="br.com.jangada.bd" resource="br/com/jangada/bd/Investidor.hbm.xml"/>
-   <mapping class="br.com.jangada.bd.Investimento"
-   package="br.com.jangada.bd" resource="br/com/jangada/bd/Investimento.hbm.xml"/>
-   <mapping class="br.com.jangada.bd.Logs"
-   package="br.com.jangada.bd" resource="br/com/jangada/bd/Logs.hbm.xml"/>
-   <mapping class="br.com.jangada.bd.Noticias"
-   package="br.com.jangada.bd" resource="br/com/jangada/bd/Noticias.hbm.xml"/>
->>>>>>> e09a970b6c9424b77550ec6abf194106510739b7:src/resources/hibernate.cfg.xml
+   <mapping resource="br/com/jangada/bd/Logs.hbm.xml"/> 
  </session-factory>
 </hibernate-configuration>

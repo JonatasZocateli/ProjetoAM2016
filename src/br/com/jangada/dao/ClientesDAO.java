@@ -16,7 +16,7 @@ import br.com.jangada.bd.Clientes;
 /**
  * Home object for domain model class Clientes.
  * @see br.com.jangada.dao.Clientes
- * @author Hibernate Tools
+ * @author Hibernate Tools 
  */
 public class ClientesDAO {
 

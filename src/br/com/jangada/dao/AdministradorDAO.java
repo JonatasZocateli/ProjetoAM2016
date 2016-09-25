@@ -15,7 +15,7 @@ import br.com.jangada.bd.Administrador;
 /**
  * Home object for domain model class Administador.
  * @see br.com.jangada.dao.Administrador
- * @author Hibernate Tools
+ * @author Hibernate Tools 
  */
 public class AdministradorDAO {
 

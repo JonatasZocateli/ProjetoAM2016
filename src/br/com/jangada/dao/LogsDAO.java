@@ -15,7 +15,7 @@ import br.com.jangada.bd.Logs;
 /**
  * Home object for domain model class Logs.
  * @see br.com.jangada.dao.Logs
- * @author Hibernate Tools
+ * @author Hibernate Tools 
  */
 public class LogsDAO {
 

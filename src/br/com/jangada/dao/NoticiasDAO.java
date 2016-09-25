@@ -15,7 +15,7 @@ import br.com.jangada.bd.Noticias;
 /**
  * Home object for domain model class Noticias.
  * @see br.com.jangada.dao.Noticias
- * @author Hibernate Tools
+ * @author Hibernate Tools 
  */
 public class NoticiasDAO {
 

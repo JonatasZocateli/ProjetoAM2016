@@ -15,7 +15,7 @@ import br.com.jangada.bd.Investimento;
 /**
  * Home object for domain model class Investimento.
  * @see br.com.jangada.dao.Investimento
- * @author Hibernate Tools
+ * @author Hibernate Tools 
  */
 public class InvestimentoDAO {
 
