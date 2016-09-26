@@ -1,5 +1,8 @@
 package br.com.jangada.managedbean;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import br.com.jangada.bd.Administrador;
 import br.com.jangada.dao.AdministradorDAO;
 
@@ -16,8 +19,18 @@ public class CadastrarAdministrador {
 		this.administrador = administrador;
 	}
 	
+	private List<Administrador> listaAdministrador;
+	
+	public List<Administrador> getlistaAdministrador() {
+		return listaAdministrador;
+	}
+	
 	public CadastrarAdministrador(){
 		administrador = new Administrador();
+		//listaAdministrador = new ArrayList<Administrador>();
+		
+		AdministradorDAO dao = new AdministradorDAO();
+		listaAdministrador = dao.listaAdministrador(administrador);
 	}
 	
 	public String getRepetirSenha() {
@@ -41,7 +54,17 @@ public class CadastrarAdministrador {
 				
 	}
 	
-	
+	public String listarAdministradores(){
+		
+		try{
+			AdministradorDAO dao = new AdministradorDAO();
+			listaAdministrador = dao.listaAdministrador(administrador);
+			
+			return "listausuarios.jsf";
+		}catch(Exception e){
+			return "error";
+		}
+	}
 	
 
 }

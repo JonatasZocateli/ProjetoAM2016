@@ -108,6 +108,8 @@ public class AdministradorDAO {
 			throw re;
 		}
 	}
+	
+	
 
 	public List findByExample(Administrador instance) {
 		log.debug("finding Administador instance by example");
@@ -121,4 +123,23 @@ public class AdministradorDAO {
 			throw re;
 		}
 	}
+	
+	public List listaAdministrador(Administrador instance) {
+		log.debug("finding Administador instance by example");
+		try {
+			sessionFactory.getCurrentSession().beginTransaction();
+			List results = sessionFactory.getCurrentSession().createCriteria(Administrador.class).list();
+			sessionFactory.getCurrentSession().beginTransaction().commit();
+			
+			//= sessionFactory.getCurrentSession().createCriteria("br.com.jangada.dao.Administador")
+			//		.add(Example.create(instance)).list();
+			log.debug("find by example successful, result size: " + results.size());
+			return results;
+		} catch (RuntimeException re) {
+			log.error("find by example failed", re);
+			throw re;
+		}
+	}
+	
+	
 }

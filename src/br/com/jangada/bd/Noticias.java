@@ -13,7 +13,7 @@ public class Noticias implements java.io.Serializable {
 	private Administrador administador;
 	private String tituloNoticia;
 	private String subtituloNoticia;
-	private byte[] conteudoNoticia;
+	private String conteudoNoticia;
 	private String urlImagem;
 	private Date dataHoraNoticia;
 	private Character ativoNoticia;
@@ -26,7 +26,7 @@ public class Noticias implements java.io.Serializable {
 		this.subtituloNoticia = subtituloNoticia;
 	}
 
-	public Noticias(Administrador administador, String tituloNoticia, String subtituloNoticia, byte[] conteudoNoticia,
+	public Noticias(Administrador administador, String tituloNoticia, String subtituloNoticia, String conteudoNoticia,
 			String urlImagem, Date dataHoraNoticia, Character ativoNoticia) {
 		this.administador = administador;
 		this.tituloNoticia = tituloNoticia;
@@ -69,11 +69,11 @@ public class Noticias implements java.io.Serializable {
 		this.subtituloNoticia = subtituloNoticia;
 	}
 
-	public byte[] getConteudoNoticia() {
+	public String getConteudoNoticia() {
 		return this.conteudoNoticia;
 	}
 
-	public void setConteudoNoticia(byte[] conteudoNoticia) {
+	public void setConteudoNoticia(String conteudoNoticia) {
 		this.conteudoNoticia = conteudoNoticia;
 	}
 
