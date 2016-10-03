@@ -119,102 +119,27 @@
 		     <hr />
 		     <div id="list" class="row">
 		     	<div class="table-responsive col-md-12">
-			        <table class="table table-striped" cellspacing="0" cellpadding="0">
-			            <thead>
-			                <tr>
-			                    <th>ID</th>
-			                    <th>Título</th>
-			                    <th>Início</th>
-			                    <th>Data de Publicação</th>
-			                    <th class="actions">Gerenciar</th>
-			                 </tr>
-			            </thead>
-			            <tbody>
-			 
-			                <tr>
-			                    <td>1001</td>
-			                    <td>O começo</td>
-			                    <td>Jes</td>
-			                    <td>01/01/2015</td>
-			                    <td class="actions">
-			                        <a class="btn btn-success btn-xs" href="noticia.jsf">Visualizar</a>
-			                        <a class="btn btn-warning btn-xs" href="edit.html">Editar</a>
-			                        <a class="btn btn-danger btn-xs"  href="#" data-toggle="modal" data-target="#delete-modal">Excluir</a>
-			                    </td>
-			                </tr>
-			                <tr>
-			                    <td>1001</td>
-			                    <td>Lorem ipsum dolor sit amet, consectetur adipiscing</td>
-			                    <td>Jes</td>
-			                    <td>01/01/2015</td>
-			                    <td class="actions">
-			                        <a class="btn btn-success btn-xs" href="view.html">Visualizar</a>
-			                        <a class="btn btn-warning btn-xs" href="edit.html">Editar</a>
-			                        <a class="btn btn-danger btn-xs"  href="#" data-toggle="modal" data-target="#delete-modal">Excluir</a>
-			                    </td>
-			                </tr>
-			                <tr>
-			                    <td>1001</td>
-			                    <td>Lorem ipsum dolor sit amet, consectetur adipiscing</td>
-			                    <td>Jes</td>
-			                    <td>01/01/2015</td>
-			                    <td class="actions">
-			                        <a class="btn btn-success btn-xs" href="view.html">Visualizar</a>
-			                        <a class="btn btn-warning btn-xs" href="edit.html">Editar</a>
-			                        <a class="btn btn-danger btn-xs"  href="#" data-toggle="modal" data-target="#delete-modal">Excluir</a>
-			                    </td>
-			                </tr>
-			                <tr>
-			                    <td>1001</td>
-			                    <td>Lorem ipsum dolor sit amet, consectetur adipiscing</td>
-			                    <td>Jes</td>
-			                    <td>01/01/2015</td>
-			                    <td class="actions">
-			                        <a class="btn btn-success btn-xs" href="view.html">Visualizar</a>
-			                        <a class="btn btn-warning btn-xs" href="edit.html">Editar</a>
-			                        <a class="btn btn-danger btn-xs"  href="#" data-toggle="modal" data-target="#delete-modal">Excluir</a>
-			                    </td>
-			                </tr>
-			                <tr>
-			                    <td>1001</td>
-			                    <td>Lorem ipsum dolor sit amet, consectetur adipiscing</td>
-			                    <td>Jes</td>
-			                    <td>01/01/2015</td>
-			                    <td class="actions">
-			                        <a class="btn btn-success btn-xs" href="view.html">Visualizar</a>
-			                        <a class="btn btn-warning btn-xs" href="edit.html">Editar</a>
-			                        <a class="btn btn-danger btn-xs"  href="#" data-toggle="modal" data-target="#delete-modal">Excluir</a>
-			                    </td>
-			                </tr>
-			                <tr>
-			                    <td>1001</td>
-			                    <td>Lorem ipsum dolor sit amet, consectetur adipiscing</td>
-			                    <td>Jes</td>
-			                    <td>01/01/2015</td>
-			                    <td class="actions">
-			                        <a class="btn btn-success btn-xs" href="view.html">Visualizar</a>
-			                        <a class="btn btn-warning btn-xs" href="edit.html">Editar</a>
-			                        <a class="btn btn-danger btn-xs"  href="#" data-toggle="modal" data-target="#delete-modal">Excluir</a>
-			                    </td>
-			                </tr>
-			 
-			            </tbody>
-			         </table>
+			        <h:dataTable  class="table table-striped" value="#{noticiasMB.listaNoticias}" var="noticia">
+			        <h:column><f:facet name="header">ID</f:facet>#{noticia.idNoticias}</h:column>
+            <h:column><f:facet name="header">Titulo</f:facet>#{noticia.tituloNoticia}</h:column>
+            <h:column><f:facet name="header">Sub-Titulo</f:facet>#{noticia.subtituloNoticia}</h:column>
+            <h:column><f:facet name="header">Conteúdo</f:facet>#{noticia.conteudoNoticia}</h:column>
+            <h:column><f:facet name="header">Data Publicação</f:facet>#{noticia.dataHoraNoticia}</h:column>            
+            <h:column><f:facet name="header">Actions</f:facet>
+            <h:form>
+                <a class="btn btn-warning btn-xs" href="edit.html">Editar</a>  &nbsp;
+                <h:commandButton  class="btn btn-danger btn-xs" 
+                value="Excluir" 
+                action="#{noticiasMB.excluirNoticias(noticia)}"/>
+                
+                </h:form>
+            </h:column>
+        </h:dataTable>
 			 
 			     </div>
 		     </div> <!-- /#list -->
 		 	
-		     <div id="bottom" class="row">
-		     	<div class="col-md-12">      
-			        <ul class="pagination">
-			            <li class="disabled"><a>&lt; Anterior</a></li>
-			            <li class="disabled"><a>1</a></li>
-			            <li><a href="#">2</a></li>
-			            <li><a href="#">3</a></li>
-			            <li class="next"><a href="#" rel="next">Próximo &gt;</a></li>
-			        </ul><!-- /.pagination -->
-			    </div>
-		     </div> <!-- /#bottom -->
+		     
 	 	</div>  <!-- /#main -->	
 	</section>		
 	</div>

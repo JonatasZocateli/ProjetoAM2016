@@ -53,7 +53,7 @@
 					<a href="#page-top">Área do Jangadeiro</a>
 				</h1>
             </div>
-
+			
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
@@ -61,10 +61,14 @@
                         <a href="#page-top"></a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="listagem.jsf">Noticias</a>
+                      <h:form>
+                        <h:commandLink class="page-scroll" value="Noticias" action="#{noticiasMB.listarNoticias}" />
+                        </h:form>
                     </li>
                     <li>
-                        <a class="page-scroll" href="listaclientes.jsf">Clientes</a>
+                    	<h:form>
+                        <h:commandLink class="page-scroll" value="Clientes" action="#{clientesMB.listarClientes}" />
+                         </h:form>
                     </li>
                     <li>
                         <a class="page-scroll" href="listaplanos.jsf">Planos</a>
@@ -73,7 +77,9 @@
                         <a class="page-scroll" href="listainvestidores.jsf">Investidores</a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="listausuarios.jsf">Configurar Acessos</a>
+                    	<h:form>
+                        <h:commandLink class="page-scroll" value="Configurar Acessos" action="#{administradorMB.listarAdministradores}" />
+                         </h:form>
                     </li>
                     <li>
                         <a class="page-scroll" href="index.jsf">Sair</a>
@@ -81,6 +87,7 @@
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
+           
         </div>
         <!-- /.container-fluid -->
     </nav>

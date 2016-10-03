@@ -2,7 +2,8 @@ package br.com.jangada.managedbean;
 
 
 
-import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.http.Part;
 
@@ -34,6 +35,15 @@ public class CadastrarNoticias {
 		noticias = new Noticias();
 	}
 	
+	private List<Noticias> listaNoticias;
+	
+	public List<Noticias> getListaNoticias(){
+		List<Noticias> list = new NoticiasDAO().listaNoticias(noticias);
+		listaNoticias = new ArrayList<Noticias>(list);
+		
+		return listaNoticias;
+	}
+	
 	public String incluirNoticias(){
 		try{
 			String nomeArquivo = null; 
@@ -51,6 +61,26 @@ public class CadastrarNoticias {
 			return "erro";
 		}
 		
+		
+	}
+	
+	public String listarNoticias(){
+		try{
+			return "listagem";
+		}catch(Exception e){
+			return "erro";
+		}
+	}
+	
+	public String excluirNoticias(Noticias noticia){
+		try{
+			NoticiasDAO dao = new NoticiasDAO();
+			dao.delete(noticia);		
+			
+			return listarNoticias();
+		}catch(Exception e){
+			return "erro";
+		}
 		
 	}
 	

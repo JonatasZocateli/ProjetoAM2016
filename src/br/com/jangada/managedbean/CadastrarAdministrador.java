@@ -1,14 +1,21 @@
 package br.com.jangada.managedbean;
 
+
 import java.util.ArrayList;
 import java.util.List;
+import javax.faces.bean.SessionScoped;
+import javax.faces.model.DataModel;
+import javax.faces.model.ListDataModel;
 
 import br.com.jangada.bd.Administrador;
 import br.com.jangada.dao.AdministradorDAO;
 
+
+@SessionScoped
 public class CadastrarAdministrador {
 	
 	private Administrador administrador;
+	private List<Administrador> listaAdministrador;
 	private String repetirSenha;
 
 	public Administrador getAdministrador() {
@@ -19,19 +26,18 @@ public class CadastrarAdministrador {
 		this.administrador = administrador;
 	}
 	
-	private List<Administrador> listaAdministrador;
-	
-	public List<Administrador> getlistaAdministrador() {
-		return listaAdministrador;
-	}
-	
 	public CadastrarAdministrador(){
 		administrador = new Administrador();
-		//listaAdministrador = new ArrayList<Administrador>();
 		
-		AdministradorDAO dao = new AdministradorDAO();
-		listaAdministrador = dao.listaAdministrador(administrador);
 	}
+		
+	public List<Administrador> getlistaAdministrador(){		
+		List<Administrador> list = new AdministradorDAO().listaAdministrador(administrador);
+		listaAdministrador = new ArrayList<Administrador>(list);
+		
+		return  listaAdministrador;
+	}
+	
 	
 	public String getRepetirSenha() {
 		return repetirSenha;
@@ -54,16 +60,27 @@ public class CadastrarAdministrador {
 				
 	}
 	
-	public String listarAdministradores(){
 		
+	public String excluirAdministrador(Administrador adm){
 		try{
 			AdministradorDAO dao = new AdministradorDAO();
-			listaAdministrador = dao.listaAdministrador(administrador);
+			dao.delete(adm);
 			
-			return "listausuarios.jsf";
+			return listarAdministradores();
 		}catch(Exception e){
 			return "error";
 		}
+	}
+	
+	public String listarAdministradores(){
+		try{
+			
+			return "listausuarios";
+		}catch(Exception e){
+			return "erro";
+		}
+		
+		
 	}
 	
 

@@ -120,4 +120,21 @@ public class NoticiasDAO {
 			throw re;
 		}
 	}
+	
+	public List listaNoticias(Noticias instance){
+		log.debug("finding Administador instance by example");
+		try {
+			sessionFactory.getCurrentSession().beginTransaction();
+			List results = sessionFactory.getCurrentSession().createCriteria(instance.getClass()).list();
+			sessionFactory.getCurrentSession().beginTransaction().commit();
+			
+			//= sessionFactory.getCurrentSession().createCriteria("br.com.jangada.dao.Administador")
+			//		.add(Example.create(instance)).list();
+			log.debug("find by example successful, result size: " + results.size());
+			return results;
+		} catch (RuntimeException re) {
+			log.error("find by example failed", re);
+			throw re;
+		}
+	}
 }

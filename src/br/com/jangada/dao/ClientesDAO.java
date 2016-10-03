@@ -10,7 +10,6 @@ import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.criterion.Example;
 
-
 import br.com.jangada.bd.Clientes;
 
 /**
@@ -73,7 +72,9 @@ public class ClientesDAO {
 	public void delete(Clientes persistentInstance) {
 		log.debug("deleting Clientes instance");
 		try {
+			sessionFactory.getCurrentSession().beginTransaction();
 			sessionFactory.getCurrentSession().delete(persistentInstance);
+			sessionFactory.getCurrentSession().beginTransaction().commit();
 			log.debug("delete successful");
 		} catch (RuntimeException re) {
 			log.error("delete failed", re);
@@ -114,6 +115,23 @@ public class ClientesDAO {
 		try {
 			List results = sessionFactory.getCurrentSession().createCriteria("br.com.jangada.dao.Clientes")
 					.add(Example.create(instance)).list();
+			log.debug("find by example successful, result size: " + results.size());
+			return results;
+		} catch (RuntimeException re) {
+			log.error("find by example failed", re);
+			throw re;
+		}
+	}
+	
+	public List listarClientes(Clientes instance) {
+		log.debug("finding Administador instance by example");
+		try {
+			sessionFactory.getCurrentSession().beginTransaction();
+			List results = sessionFactory.getCurrentSession().createCriteria(instance.getClass()).list();
+			sessionFactory.getCurrentSession().beginTransaction().commit();
+			
+			//= sessionFactory.getCurrentSession().createCriteria("br.com.jangada.dao.Administador")
+			//		.add(Example.create(instance)).list();
 			log.debug("find by example successful, result size: " + results.size());
 			return results;
 		} catch (RuntimeException re) {

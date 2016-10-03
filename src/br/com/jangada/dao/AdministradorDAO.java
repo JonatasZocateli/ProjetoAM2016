@@ -72,7 +72,10 @@ public class AdministradorDAO {
 	public void delete(Administrador persistentInstance) {
 		log.debug("deleting Administador instance");
 		try {
+			sessionFactory.getCurrentSession().beginTransaction();
 			sessionFactory.getCurrentSession().delete(persistentInstance);
+			sessionFactory.getCurrentSession().beginTransaction().commit();
+			
 			log.debug("delete successful");
 		} catch (RuntimeException re) {
 			log.error("delete failed", re);
