@@ -50,7 +50,7 @@
                    	<div class="intro">Acessar a área administrativa</div>
                 </div>
 			</div>
-			<form class="form-horizontal">
+			<h:form class="form-horizontal">
 				<fieldset>								
 					<!-- Text input-->
 					<div class="form-group">
@@ -71,13 +71,14 @@
 					<div class="form-group">
 					  <label class="col-md-4 control-label" for="textinput"></label>  
 					  <div class="col-md-4">
-					  <a class="btn btn-skin" href="listagem.jsf">Login</a>
+					  <!--<a class="btn btn-skin" href="listagem.jsf">Login</a>-->
+					  <h:commandButton value="Login" action="#{listarNoticiasMB.listarNoticias}"  /> 
 					  <span class="help-block"></span>  
 					  </div>
 					</div>
 				
 				</fieldset>
-			</form>			
+			</h:form>			
 		</section>		
 	</div>
 	

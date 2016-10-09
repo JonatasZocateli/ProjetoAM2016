@@ -9,32 +9,55 @@
 		<locale-config>
 			<default-locale>en</default-locale>
 		</locale-config>
-		
-		
 	</application>
 	<managed-bean>
-		<managed-bean-name>clientesMB</managed-bean-name>
+		<managed-bean-name>incluirClientesMB</managed-bean-name>
 		  <managed-bean-class>br.com.jangada.managedbean.CadastrarCliente</managed-bean-class>
 		  <managed-bean-scope>request</managed-bean-scope>	
 	</managed-bean>
 	<managed-bean>
-		<managed-bean-name>investidorMB</managed-bean-name>
+		<managed-bean-name>listarClientesMB</managed-bean-name>
+		  <managed-bean-class>br.com.jangada.managedbean.CadastrarCliente</managed-bean-class>
+		  <managed-bean-scope>session</managed-bean-scope>	
+	</managed-bean>	
+	<managed-bean>
+		<managed-bean-name>incluirInvestidorMB</managed-bean-name>
 		  <managed-bean-class>br.com.jangada.managedbean.CadastrarInvestidor</managed-bean-class>
 		  <managed-bean-scope>request</managed-bean-scope>	
 	</managed-bean>
 	<managed-bean>
-		<managed-bean-name>administradorMB</managed-bean-name>
+		<managed-bean-name>listarInvestidorMB</managed-bean-name>
+		  <managed-bean-class>br.com.jangada.managedbean.CadastrarInvestidor</managed-bean-class>
+		  <managed-bean-scope>request</managed-bean-scope>	
+	</managed-bean>
+	<managed-bean>
+		<managed-bean-name>incluirAdministradorMB</managed-bean-name>
 		  <managed-bean-class>br.com.jangada.managedbean.CadastrarAdministrador</managed-bean-class>
 		  <managed-bean-scope>request</managed-bean-scope>	
 	</managed-bean>
 	<managed-bean>
-		<managed-bean-name>noticiasMB</managed-bean-name>
+		<managed-bean-name>listarAdministradorMB</managed-bean-name>
+		  <managed-bean-class>br.com.jangada.managedbean.CadastrarAdministrador</managed-bean-class>
+		  <managed-bean-scope>session</managed-bean-scope>	
+	</managed-bean>
+	<managed-bean>
+		<managed-bean-name>incluirNoticiasMB</managed-bean-name>
 		  <managed-bean-class>br.com.jangada.managedbean.CadastrarNoticias</managed-bean-class>
 		  <managed-bean-scope>request</managed-bean-scope>	
 	</managed-bean>
 	<managed-bean>
-		<managed-bean-name>investimentoMB</managed-bean-name>
+		<managed-bean-name>listarNoticiasMB</managed-bean-name>
+		  <managed-bean-class>br.com.jangada.managedbean.CadastrarNoticias</managed-bean-class>
+		  <managed-bean-scope>session</managed-bean-scope>	
+	</managed-bean>
+	<managed-bean>
+		<managed-bean-name>incluirInvestimentoMB</managed-bean-name>
 		  <managed-bean-class>br.com.jangada.managedbean.CadastrarInvestimento</managed-bean-class>
 		  <managed-bean-scope>request</managed-bean-scope>	
+	</managed-bean>
+	<managed-bean>
+		<managed-bean-name>listarInvestimentoMB</managed-bean-name>
+		  <managed-bean-class>br.com.jangada.managedbean.CadastrarInvestimento</managed-bean-class>
+		  <managed-bean-scope>session</managed-bean-scope>	
 	</managed-bean>
 </faces-config>

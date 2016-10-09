@@ -41,20 +41,33 @@
 		<f:view>
 			<ui:include src="topadm.xhtml" />
 		</f:view>
-	</header>	
+	</header>
+		
 	<section class="box-content box-style-1">
 		<div id="main" class="container-fluid">
+			<h:form>
 		     <div id="top" class="row">
 	 		    <div class="col-md-3">
 			        <h2>Notícias</h2>
 			    </div>			 
 			    <div class="col-md-6">
 			        <div class="input-group h2">
-			            <input name="data[search]" class="form-control" id="search" type="text" placeholder="Pesquisar Itens"/>
+			            			            
+			            <h:inputText  name="data[search]"
+				     		value="#{listarNoticiasMB.pesquisa}"
+				     		id="pesquisa" 
+				     		required="true"
+				     		requiredMessage="Por favor, Informe um valor para pesquisa"
+				     		class="form-control"
+				     	  	title="Pesquisar Itens">
+				     	</h:inputText>		  
+				     	<h:message for="pesquisa" style="color:red"/>
+			            
 			            <span class="input-group-btn">
-			                <button class="btn btn-skin" type="submit">
-			                    <span class="glyphicon glyphicon-search"></span>
-			                </button>
+			            <h:commandLink class="btn btn-skin" action="#{listarNoticiasMB.pesquisarNoticias}">
+			            <span class="glyphicon glyphicon-search"></span>
+			            
+			            </h:commandLink>
 			            </span>
 			        </div>				        
 			    </div>
@@ -115,33 +128,38 @@
 				   	</div>					    
 				</div>
 		    </div> <!-- /#top -->
-		 
+		 	</h:form>
+		 	
 		     <hr />
+		     <h:form>
 		     <div id="list" class="row">
 		     	<div class="table-responsive col-md-12">
-			        <h:dataTable  class="table table-striped" value="#{noticiasMB.listaNoticias}" var="noticia">
+		     	
+			        <h:dataTable  class="table table-striped" value="#{listarNoticiasMB.listaNoticias}" var="noticia">
 			        <h:column><f:facet name="header">ID</f:facet>#{noticia.idNoticias}</h:column>
             <h:column><f:facet name="header">Titulo</f:facet>#{noticia.tituloNoticia}</h:column>
             <h:column><f:facet name="header">Sub-Titulo</f:facet>#{noticia.subtituloNoticia}</h:column>
             <h:column><f:facet name="header">Conteúdo</f:facet>#{noticia.conteudoNoticia}</h:column>
             <h:column><f:facet name="header">Data Publicação</f:facet>#{noticia.dataHoraNoticia}</h:column>            
             <h:column><f:facet name="header">Actions</f:facet>
-            <h:form>
+            	
                 <a class="btn btn-warning btn-xs" href="edit.html">Editar</a>  &nbsp;
-                <h:commandButton  class="btn btn-danger btn-xs" 
-                value="Excluir" 
-                action="#{noticiasMB.excluirNoticias(noticia)}"/>
+                <h:commandButton class="btn btn-danger btn-xs"  
+                value="Excluir"                 
+                action="#{listarNoticiasMB.excluirNoticias(noticia)}"/>
                 
-                </h:form>
+                
             </h:column>
         </h:dataTable>
+        
 			 
 			     </div>
 		     </div> <!-- /#list -->
-		 	
+		 	</h:form>
 		     
 	 	</div>  <!-- /#main -->	
-	</section>		
+	</section>	
+		
 	</div>
 	
 	<!-- Modal -->

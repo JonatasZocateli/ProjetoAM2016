@@ -55,20 +55,21 @@
             </div>
 			
             <!-- Collect the nav links, forms, and other content for toggling -->
+            <h:form>
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
                     <li class="hidden">
                         <a href="#page-top"></a>
                     </li>
                     <li>
-                      <h:form>
-                        <h:commandLink class="page-scroll" value="Noticias" action="#{noticiasMB.listarNoticias}" />
-                        </h:form>
+                      
+                        <h:commandLink class="page-scroll" value="Noticias" action="#{listarNoticiasMB.listarNoticias}" />
+                       
                     </li>
                     <li>
-                    	<h:form>
+                    	
                         <h:commandLink class="page-scroll" value="Clientes" action="#{clientesMB.listarClientes}" />
-                         </h:form>
+                        
                     </li>
                     <li>
                         <a class="page-scroll" href="listaplanos.jsf">Planos</a>
@@ -77,15 +78,16 @@
                         <a class="page-scroll" href="listainvestidores.jsf">Investidores</a>
                     </li>
                     <li>
-                    	<h:form>
+                    	
                         <h:commandLink class="page-scroll" value="Configurar Acessos" action="#{administradorMB.listarAdministradores}" />
-                         </h:form>
+                         
                     </li>
                     <li>
                         <a class="page-scroll" href="index.jsf">Sair</a>
                     </li>
                 </ul>
             </div>
+            </h:form>
             <!-- /.navbar-collapse -->
            
         </div>

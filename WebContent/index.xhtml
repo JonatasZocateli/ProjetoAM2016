@@ -47,7 +47,7 @@
 					<a href="#page-top">Jangada</a>
 				</h1>
             </div>
-
+			
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
@@ -123,98 +123,33 @@
 	</div>
 </header>
 
+<f:metadata>
+<f:event listener="#{listarNoticiasMB.listarNoticiasIndex}" type="preRenderView"/>
+</f:metadata>
+		<h:form>
 		<div class="box-content box-1 box-style-1" id="about">
 			<div class="container">
 				<div class="top-footer">
 					<div id="owl-brand" class="owl-carousel">
-						<div class="col-sm-4">
-							<div class="box-item">
-								<div class="wrap-img">
-									<img src="images/money.png" />
+						<!--  Mensagem Pagina Principal -->
+						<ui:repeat var="noticia" value="#{listarNoticiasMB.listaNoticias}">
+							<div class="col-sm-4">
+								<div class="box-item">
+									<div class="wrap-img">
+										<img src="./images/#{noticia.urlImagem}" />
+									</div>
+									<a href="noticia.jsf">
+										<h3 class="services-heading">#{noticia.tituloNoticia}</h3>
+										<p>#{noticia.conteudoNoticia}</p>
+									</a>
 								</div>
-								<a href="noticia.jsf">
-									<h3 class="services-heading">O começo</h3>
-									<p>O Grupo Jangada foi estabelecido em 2015, com ideias inovadoras na área...</p>
-								</a>
 							</div>
-						</div>
-						<div class="col-sm-4">
-							<div class="box-item">
-								<div class="wrap-img">
-									<img src="images/money.png" />
-								</div>
-								<h3 class="services-heading">Text Heading A</h3>
-								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima quo. Aenean feugiat in ante et blandit. Vestibulum posuere molestie risus, ac interdum magna porta non. </p>
-							</div>
-						</div>
-						<div class="col-sm-4">
-							<div class="box-item">
-								<div class="wrap-img">
-									<img src="images/money.png" />
-								</div>
-								<h3 class="services-heading">Text Heading A</h3>
-								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima quo. Aenean feugiat in ante et blandit. Vestibulum posuere molestie risus, ac interdum magna porta non. </p>
-							</div>
-						</div>
-						<div class="col-sm-4">
-							<div class="box-item">
-								<div class="wrap-img">
-									<img src="images/money.png" />
-								</div>
-								<h3 class="services-heading">Text Heading A</h3>
-								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima quo. Aenean feugiat in ante et blandit. Vestibulum posuere molestie risus, ac interdum magna porta non. </p>
-							</div>
-						</div>
-						<div class="col-sm-4">
-							<div class="box-item">
-								<div class="wrap-img">
-									<img src="images/money.png" />
-								</div>
-								<h3 class="services-heading">Text Heading A</h3>
-								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima quo. Aenean feugiat in ante et blandit. Vestibulum posuere molestie risus, ac interdum magna porta non. </p>
-							</div>
-						</div>
-						<div class="col-sm-4">
-							<div class="box-item">
-								<div class="wrap-img">
-									<img src="images/money.png" />
-								</div>
-								<h3 class="services-heading">Text Heading A</h3>
-								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima quo. Aenean feugiat in ante et blandit. Vestibulum posuere molestie risus, ac interdum magna porta non. </p>
-							</div>
-						</div>	
-						<div class="col-sm-4">
-							<div class="box-item">
-								<div class="wrap-img">
-									<img src="images/money.png" />
-								</div>
-								<h3 class="services-heading">Text Heading A</h3>
-								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima quo. Aenean feugiat in ante et blandit. Vestibulum posuere molestie risus, ac interdum magna porta non. </p>
-							</div>
-						</div>
-						<div class="col-sm-4">
-							<div class="box-item">
-								<div class="wrap-img">
-									<img src="images/money.png" />
-								</div>
-								<h3 class="services-heading">Text Heading A</h3>
-								<p>aaaaaaaaaaaaaaaaaaait amet, consectetur adipisicing elit. Minima quo. Aenean feugiat in ante et blandit. Vestibulum posuere molestie risus, ac interdum magna porta non. </p>
-							</div>
-						</div>	
-						<div class="col-sm-4">
-							<div class="box-item">
-								<div class="wrap-img">
-									<img src="images/money.png" />
-								</div>
-								<h3 class="services-heading">Text Heading A</h3>
-								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima quo. Aenean feugiat in ante et blandit. Vestibulum posuere molestie risus, ac interdum magna porta non. </p>
-							</div>
-						</div>		
+						</ui:repeat>
 					</div>
 				</div>
 			</div>
 		</div>
-	
+	</h:form>
 	<!-- FOOTER -->
 		<footer>
 			<div class="wrap-footer">

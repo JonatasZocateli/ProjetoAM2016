@@ -1,19 +1,31 @@
 package br.com.jangada.managedbean;
 
 
-
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.Part;
 
 import br.com.jangada.bd.Noticias;
+import br.com.jangada.bo.FiltroPesquisas;
+import br.com.jangada.bo.IncluirImagem;
 import br.com.jangada.dao.NoticiasDAO;
+
 
 public class CadastrarNoticias {
 	
 	private Noticias noticias;
 	private Part arquivo;
+	private String pesquisa; 
+	
+
+	public String getPesquisa() {
+		return pesquisa;
+	}
+
+	public void setPesquisa(String pesquisa) {
+		this.pesquisa = pesquisa;
+	}
 
 	public Noticias getNoticias() {
 		return noticias;
@@ -28,29 +40,28 @@ public class CadastrarNoticias {
 	}
 	
 	public void setArquivo(Part arquivo){
-		this.arquivo = arquivo;		
+		this.arquivo = arquivo;
 	}
+	
 	
 	public CadastrarNoticias(){
 		noticias = new Noticias();
+		listaNoticias = new ArrayList<Noticias>();
 	}
 	
 	private List<Noticias> listaNoticias;
 	
-	public List<Noticias> getListaNoticias(){
-		List<Noticias> list = new NoticiasDAO().listaNoticias(noticias);
-		listaNoticias = new ArrayList<Noticias>(list);
-		
+	public List<Noticias> getListaNoticias(){			
 		return listaNoticias;
 	}
 	
+	
 	public String incluirNoticias(){
 		try{
-			String nomeArquivo = null; 
-			nomeArquivo = getFileName(arquivo);		
+			IncluirImagem bo = new IncluirImagem();		
+			String urlImagem = bo.incluirImagem(arquivo);
 			
-			arquivo.write("C:\\uploadfile\\"+getFileName(arquivo));			
-			noticias.setUrlImagem(nomeArquivo);
+			noticias.setUrlImagem(urlImagem);
 			
 			NoticiasDAO dao = new NoticiasDAO();
 			dao.persist(noticias);			
@@ -66,16 +77,30 @@ public class CadastrarNoticias {
 	
 	public String listarNoticias(){
 		try{
+			List<Noticias> list = new NoticiasDAO().listaNoticias(noticias);
+			listaNoticias = new ArrayList<Noticias>(list);
+			
 			return "listagem";
 		}catch(Exception e){
 			return "erro";
 		}
 	}
 	
-	public String excluirNoticias(Noticias noticia){
+	public String listarNoticiasIndex(){
+		try{
+			List<Noticias> list = new NoticiasDAO().listaNoticias(noticias);
+			listaNoticias = new ArrayList<Noticias>(list);
+			
+			return "index";
+		}catch(Exception e){
+			return "erro";
+		}
+	}
+	
+	public String excluirNoticias(Noticias nt){
 		try{
 			NoticiasDAO dao = new NoticiasDAO();
-			dao.delete(noticia);		
+			dao.delete(nt);		
 			
 			return listarNoticias();
 		}catch(Exception e){
@@ -84,14 +109,16 @@ public class CadastrarNoticias {
 		
 	}
 	
-	public static String getFileName(Part part){
-		for (String cd : part.getHeader("content-disposition").split(";")) {
-            if (cd.trim().startsWith("filename")) {
-                String filename = cd.substring(cd.indexOf('=') + 1).trim().replace("\"", "");
-                return filename.substring(filename.lastIndexOf('/') + 1).substring(filename.lastIndexOf('\\') + 1); // MSIE fix.
-            }
-        }
-        return null;
+	public String pesquisarNoticias(){
+		try{
+			FiltroPesquisas pesq = new FiltroPesquisas();			
+			listaNoticias = pesq.pesquisaConteudo(1, pesquisa);			
+			
+			return "listagem";
+		}catch(Exception e){
+			return "erro";
+		}
+		
 	}
 	
 	
