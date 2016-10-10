@@ -137,6 +137,25 @@ public class AdministradorDAO {
 		}
 	}
 	
+	public boolean validaLogin(Administrador instance) {
+		log.debug("finding Administador instance by example");
+		try {
+			boolean results = false;
+			sessionFactory.getCurrentSession().beginTransaction();
+			Criteria criteria = sessionFactory.getCurrentSession().createCriteria(Administrador.class);	
+			criteria.add(Restrictions.eq("loginAdministrador", instance.getLoginAdministrador()));
+			criteria.add(Restrictions.eq("senhaAdministrador", instance.getSenhaAdministrador()));
+			
+			if (!criteria.list().isEmpty())
+				results = true;
+			sessionFactory.getCurrentSession().beginTransaction().commit();
+			return results;
+		} catch (RuntimeException re) {
+			log.error("find by example failed", re);
+			throw re;
+		}
+	}
+	
 	public List<Administrador> findByConteudo(String pesqField, String pesqValue, int filtroLinha,
 			int filtroConteudo, int filtroExclusivo) {
 		log.debug("finding Noticias instance by example");

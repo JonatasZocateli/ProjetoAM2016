@@ -13,10 +13,12 @@ import org.hibernate.mapping.Value;
 
 import br.com.jangada.bd.Administrador;
 import br.com.jangada.bd.Clientes;
+import br.com.jangada.bd.Investidor;
 import br.com.jangada.bd.Investimento;
 import br.com.jangada.bd.Noticias;
 import br.com.jangada.dao.AdministradorDAO;
 import br.com.jangada.dao.ClientesDAO;
+import br.com.jangada.dao.InvestidorDAO;
 import br.com.jangada.dao.InvestimentoDAO;
 import br.com.jangada.dao.NoticiasDAO;
 
@@ -98,7 +100,7 @@ public class FiltroPesquisas {
 			if (filtroCondicional == 1) 
 				list = dao.findByExample("emailCliente", pesquisa);
 			else
-				list = dao.findByConteudo("subtituloNoticia", pesquisa, filtroLinha, filtroCondicional, filtroExclusivo);
+				list = dao.findByConteudo("emailCliente", pesquisa, filtroLinha, filtroCondicional, filtroExclusivo);
 			break;
 		case 4:
 			list = dao.findByExample("nascimentoCliente", Date.parse(pesquisa));			
@@ -164,4 +166,58 @@ public class FiltroPesquisas {
 		}
 		return list;				
 	}
+	
+	public List<Investidor> pesquisaInvestidor(int filtroPrincipal, int filtroLinha, int filtroCondicional, 
+            int filtroExclusivo, String pesquisa){
+		InvestidorDAO dao = new InvestidorDAO();
+		List<Investidor> list = null;
+		
+		switch (filtroPrincipal) {
+		case 1:
+			list = dao.findByExample("idInvestidor", Integer.parseInt(pesquisa));
+			break;
+		case 2:
+			if (filtroCondicional == 1)        		
+				list = dao.findByExample("nomeInvestidor", pesquisa);        	 
+			else        		
+				list = dao.findByConteudo("nomeInvestidor", pesquisa, filtroLinha, filtroCondicional, filtroExclusivo);	
+			break;
+		case 3:
+			if (filtroCondicional == 1) 
+				list = dao.findByExample("emailInvestidor", pesquisa);
+			else
+				list = dao.findByConteudo("emailInvestidor", pesquisa, filtroLinha, filtroCondicional, filtroExclusivo);
+			break;
+		case 4:
+			list = dao.findByExample("nascimentoInvestidor", Date.parse(pesquisa));			
+			break;	
+		case 5:
+			if (filtroCondicional == 1) 
+				list = dao.findByExample("nomeEmpresaInvestidor", pesquisa);
+			else
+				list = dao.findByConteudo("nomeEmpresaInvestidor", pesquisa, filtroLinha, filtroCondicional, filtroExclusivo);
+			break;	
+		case 6:
+			if (filtroCondicional == 1) 
+				list = dao.findByExample("cidadeInvestidor", pesquisa);
+			else
+				list = dao.findByConteudo("cidadeInvestidor", pesquisa, filtroLinha, filtroCondicional, filtroExclusivo);
+			break;	
+		case 7:
+			if (filtroCondicional == 1) 
+				list = dao.findByExample("estadoInvestidor", pesquisa);
+			else
+				list = dao.findByConteudo("estadoInvestidor", pesquisa, filtroLinha, filtroCondicional, filtroExclusivo);
+			break;
+		case 8:
+			if (filtroCondicional == 1) 
+				list = dao.findByExample("paisInvestidor", pesquisa);
+			else
+				list = dao.findByConteudo("paisInvestidor", pesquisa, filtroLinha, filtroCondicional, filtroExclusivo);
+			break;	
+		}
+		return list;				
+	}
+	
+	
 }

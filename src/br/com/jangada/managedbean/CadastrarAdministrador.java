@@ -3,9 +3,14 @@ package br.com.jangada.managedbean;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.SessionScoped;
+import javax.faces.component.UIComponent;
+import javax.faces.context.FacesContext;
 import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
+import javax.faces.validator.ValidatorException;
 
 import br.com.jangada.bd.Administrador;
 import br.com.jangada.bo.FiltroPesquisas;
@@ -24,7 +29,17 @@ public class CadastrarAdministrador {
 	private int filtroExclusivo;
 	private int filtroLinha = 1;
 	private int tipoPesquisa;
+	private String mensagemAdmin = "";
 	
+	
+	public String getMensagemAdmin() {
+		return mensagemAdmin;
+	}
+
+	public void setMensagemAdmin(String mensagemAdmin) {
+		this.mensagemAdmin = mensagemAdmin;
+	}
+
 	public List<Administrador> getListaAdministrador() {
 		return listaAdministrador;
 	}
@@ -206,6 +221,23 @@ public class CadastrarAdministrador {
 		}
 		
 		
+	}
+	
+	public String validarLogin() throws ValidatorException{
+		try{
+			AdministradorDAO dao = new AdministradorDAO();
+			mensagemAdmin = "";
+			
+			if (!dao.validaLogin(administrador)){
+				mensagemAdmin = "Login ou Senha invalido";
+				throw new ValidatorException(new FacesMessage(mensagemAdmin));				
+			}
+			
+			return listarAdministradores();
+	     }catch(Exception e){
+	    	 
+	    	 return "loginAdm";
+	     }			
 	}
 
 }

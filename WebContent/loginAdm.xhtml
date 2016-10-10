@@ -51,20 +51,41 @@
                 </div>
 			</div>
 			<h:form class="form-horizontal">
+			    
 				<fieldset>								
 					<!-- Text input-->
 					<div class="form-group">
-					  <label class="col-md-4 control-label" for="textinput"></label>  
-					  <div class="col-md-4">
-					  <input id="textinput" name="textinput" type="text" placeholder="Login" class="form-control input-md"/>					  
+					  <label class="col-md-4 control-label" for="textinput">Login</label>  
+					  <div class="col-md-4">				  
+					  
+					  <h:inputText 
+				     	value="#{incluirAdministradorMB.administrador.loginAdministrador}"
+				     	id="loginAdministrador"
+				     	required="true" 
+				     	requiredMessage="Por favor, informe o Login!"				     	 
+				     	class="form-control input-md"
+				     	>
+				     	</h:inputText>
+				     	
+				     	<h:message for="loginAdministrador" />	
+				     	<label  for="textinput"> <h4 style="color:red">
+				     	#{listarAdministradorMB.mensagemAdmin}	</h4></label> 
+				   				  
 					  </div>
 					</div>
 					
 					<!-- Password input-->
 					<div class="form-group">
-					  <label class="col-md-4 control-label" for="passwordinput"></label>
+					  <label class="col-md-4 control-label" for="passwordinput">Senha</label>
 					  <div class="col-md-4">
-					    <input id="passwordinput" name="passwordinput" type="password" placeholder="Senha" class="form-control input-md"/>					   
+					    
+					     <h:inputSecret value="#{incluirAdministradorMB.administrador.senhaAdministrador}"
+				     	id="senhaAdministrador"
+				     	required="true"	
+				     	requiredMessage="Por favor, informe a Senha!"				     	 
+				     	class="form-control input-md">
+				     	</h:inputSecret>
+					    <h:message for="senhaAdministrador" />						   
 					  </div>
 					</div>
 					
@@ -72,7 +93,7 @@
 					  <label class="col-md-4 control-label" for="textinput"></label>  
 					  <div class="col-md-4">
 					  <!--<a class="btn btn-skin" href="listagem.jsf">Login</a>-->
-					  <h:commandButton value="Login" action="#{listarNoticiasMB.listarNoticias}"  /> 
+					  <h:commandButton value="Login" action="#{incluirAdministradorMB.validarLogin}"  /> 
 					  <span class="help-block"></span>  
 					  </div>
 					</div>

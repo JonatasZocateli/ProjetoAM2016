@@ -59,7 +59,7 @@
 				  <label class="col-md-4 control-label" for="textinput">Nome Completo</label>  
 				  <div class="col-md-4">				  
 				  <h:inputText 
-				     value="#{incluirInvestidorMB.investidor.nomeInvestidor}"
+				     value="#{listarInvestidorMB.investidor.nomeInvestidor}"
 				     id="nomeInvestidor" 
 				     required="true"
 				     requiredMessage="Por favor, preencha o Nome completo"
@@ -75,7 +75,7 @@
 				  <label class="col-md-4 control-label" for="textinput">Empresa</label>  
 				  <div class="col-md-4">
 				  <h:inputText 
-				     value="#{incluirInvestidorMB.investidor.nomeEmpresaInvestidor}"
+				     value="#{listarInvestidorMB.investidor.nomeEmpresaInvestidor}"
 				     id="nomeEmpresaInvestidor" 
 				     required="true"
 				     requiredMessage="Por favor, preencha a Razão Social da Empresa"
@@ -92,7 +92,7 @@
 				  <label class="col-md-4 control-label" for="selectbasic">Segmento</label>
 				  <div class="col-md-4">				    
 				    <h:inputText 
-				     value="#{incluirInvestidorMB.investidor.segmentoEmpresaInvestidor}"
+				     value="#{listarInvestidorMB.investidor.segmentoEmpresaInvestidor}"
 				     id="segmentoEmpresaInvestidor" 
 				     required="true"
 				     requiredMessage="Por favor, informe o segmento da Empresa"
@@ -107,7 +107,7 @@
 				  <label class="col-md-4 control-label" for="textinput">Data de Nascimento</label>  
 				  <div class="col-md-4">
 				  	 <h:inputText
-				     	value="#{incluirInvestidorMB.investidor.nascimentoInvestidor}"
+				     	value="#{listarInvestidorMB.investidor.nascimentoInvestidor}"
 				     	id="nascimentoInvestidor"	
 				     	required="true"
 				     	requiredMessage="Por favor, preencha a data de nascimento"
@@ -126,7 +126,7 @@
 				  <label class="col-md-4 control-label" for="textinput">CPF</label>  
 				  <div class="col-md-4">
 				  <h:inputText 
-				     value="#{incluirInvestidorMB.investidor.cpfInvestidor}"
+				     value="#{listarInvestidorMB.investidor.cpfInvestidor}"
 				     id="cpfInvestidor" 
 				     required="true"
 				     requiredMessage="Por favor, preencha o CPF"
@@ -146,7 +146,7 @@
 				  <label class="col-md-4 control-label" for="textinput">Email</label>  
 				  <div class="col-md-4">
 				  <h:inputText 
-				     value="#{incluirInvestidorMB.investidor.emailInvestidor}"
+				     value="#{listarInvestidorMB.investidor.emailInvestidor}"
 				     id="emailInvestidor" 
 				     required="true"
 				     requiredMessage="Por favor, preencha o email"
@@ -162,7 +162,7 @@
 				  <label class="col-md-4 control-label" for="textinput">CEP</label>  
 				  <div class="col-md-4">
 				  <h:inputText 
-				     value="#{incluirInvestidorMB.investidor.cepInvestidor}"
+				     value="#{listarInvestidorMB.investidor.cepInvestidor}"
 				     id="cepInvestidor" 
 				     required="true"
 				     requiredMessage="Por favor, preencha o CPF"
@@ -183,7 +183,7 @@
 				  <label class="col-md-4 control-label" for="textinput">Logradouro</label>  
 				  <div class="col-md-4">
 				  <h:inputText 
-				     value="#{incluirInvestidorMB.investidor.logradouroInvestidor}"
+				     value="#{listarInvestidorMB.investidor.logradouroInvestidor}"
 				     id="logradouroInvestidor" 
 				     class="form-control input-md">
 				     </h:inputText>		
@@ -196,7 +196,7 @@
 				  <label class="col-md-4 control-label" for="textinput">Bairro</label>  
 				  <div class="col-md-4">
 				  <h:inputText 
-				     value="#{incluirInvestidorMB.investidor.bairroInvestidor}"
+				     value="#{listarInvestidorMB.investidor.bairroInvestidor}"
 				     id="bairroInvestidor" 
 				     class="form-control input-md">
 				     </h:inputText>	
@@ -210,7 +210,7 @@
 				  <label class="col-md-4 control-label" for="textinput">Cidade</label>  
 				  <div class="col-md-4">
 				  <h:inputText 
-				     value="#{incluirInvestidorMB.investidor.cidadeInvestidor}"
+				     value="#{listarInvestidorMB.investidor.cidadeInvestidor}"
 				     id="cidadeInvestidor" 
 				     class="form-control input-md">
 				     </h:inputText>	
@@ -223,7 +223,7 @@
 				  <label class="col-md-4 control-label" for="textinput">Estado</label>  
 				  <div class="col-md-4">
 				  <h:inputText 
-				     value="#{incluirInvestidorMB.investidor.estadoInvestidor}"
+				     value="#{listarInvestidorMB.investidor.estadoInvestidor}"
 				     id="estadoInvestidor" 
 				     class="form-control input-md">
 				     </h:inputText>	
@@ -236,7 +236,7 @@
 				  <label class="col-md-4 control-label" for="textinput">País</label>  
 				  <div class="col-md-4">
 				  <h:inputText 
-				     value="#{incluirInvestidorMB.investidor.paisInvestidor}"
+				     value="#{listarInvestidorMB.investidor.paisInvestidor}"
 				     id="paisInvestidor" 
 				     class="form-control input-md">
 				     </h:inputText>	
@@ -250,7 +250,10 @@
 				  <div class="col-md-4">				  
 				  <h:commandButton class="btn btn-skin" 
 				                   value="Pronto" 
-				                   action="#{incluirInvestidorMB.incluirInvestidor}" ></h:commandButton>
+				                   action="#{listarInvestidorMB.atualizarInvestidor}" ></h:commandButton>&nbsp;
+				  <h:commandButton class="btn btn-danger" immediate="true" 
+				                   value="Cancelar Edição" 
+				                   action="listainvestidor.xhtml" ></h:commandButton>   
 				  <span class="help-block"></span>  
 				  </div>
 				</div>

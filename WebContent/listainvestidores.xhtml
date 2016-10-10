@@ -41,124 +41,129 @@
 		<f:view>
 			<ui:include src="topadm.xhtml" />
 		</f:view>
-	</header>	
+	</header>
+		
 	<section class="box-content box-style-1">
 		<div id="main" class="container-fluid">
+			<h:form>	
 		     <div id="top" class="row">
 	 		    <div class="col-md-3">
-			        <h2>Investidores</h2>
-			    </div>			 
+			        <h2>Investidor</h2>
+			    </div>		 
 			    <div class="col-md-6">
 			        <div class="input-group h2">
-			            <input name="data[search]" class="form-control" id="search" type="text" placeholder="Pesquisar Clientes"/>
+			            			            
+			            <h:inputText  name="data[search]"
+				     		value="#{listarInvestidorMB.pesquisa}"
+				     		id="pesquisa" 
+				     		required="true"
+				     		requiredMessage="Por favor, Informe um valor para pesquisa"
+				     		class="form-control"
+				     	  	title="Pesquisar Investidors">
+				     	</h:inputText>		  
+				     	<h:message for="pesquisa" style="color:red"/>
+			            
 			            <span class="input-group-btn">
-			                <button class="btn btn-skin" type="submit">
-			                    <span class="glyphicon glyphicon-search"></span>
-			                </button>
+			            <h:commandLink class="btn btn-skin" action="#{listarInvestidorMB.pesquisarInvestidor}">
+			            <span class="glyphicon glyphicon-search"></span>			            
+			            </h:commandLink> 
+			            </span> &nbsp;
+			            <span class="input-group-btn">
+			            <h:commandLink class="btn btn-skin" immediate="true"  value="Limpar Pesquisa" action="#{listarInvestidorMB.limparPesquisa}"/>	
 			            </span>
 			        </div>				        
 			    </div>
+			   			  
+			   
+			    
 			   </div> 
+			   
 			   <div id="top" class="row">
 			    <!-- Select Basic -->
 				<div class="form-group">	
-					<label class="col-md-3 control-label" for="selectbasic">Filtro 1</label>
-					<label class="col-md-3 control-label" for="selectbasic">Filtro 2</label>
-					<label class="col-md-3 control-label" for="selectbasic">Filtro 3</label>
-					<label class="col-md-3 control-label" for="selectbasic">Filtro 4</label>					  
+					<label class="col-md-3 control-label" for="selectbasic">Filtro Campo</label>
+					<label class="col-md-3 control-label" for="selectbasic">Filtro Linha</label>
+					<label class="col-md-3 control-label" for="selectbasic">Filtro Condição</label>
+					<label class="col-md-3 control-label" for="selectbasic">Filtro Exclusivo</label>					  
 				</div>
 		     </div> <!-- /#top -->
 		   <div id="top" class="row">
 			    <!-- Select Basic -->
 				<div class="form-group">											  
 				 	<div class="col-md-3">
-				    	<select id="selectbasic" name="selectbasic" class="form-control">
-				      		<option value="1">Option one</option>
-				      		<option value="2">Option two</option>
-				    	</select>
+				    	<h:selectOneMenu value="#{listarInvestidorMB.filtroPrincipal}" class="form-control">
+				    		<f:selectItem itemValue="1" itemLabel="Pesquisa: ID"/>
+				    		<f:selectItem itemValue="2" itemLabel="Pesquisa: Nome"/>
+				    		<f:selectItem itemValue="3" itemLabel="Pesquisa: email"/>
+				    		<f:selectItem itemValue="4" itemLabel="Pesquisa: Data Nascimento"/>
+				    		<f:selectItem itemValue="5" itemLabel="Pesquisa: Empresa"/>
+				    		<f:selectItem itemValue="6" itemLabel="Pesquisa: Cidade"/>
+				    		<f:selectItem itemValue="7" itemLabel="Pesquisa: Estado"/>
+				    		<f:selectItem itemValue="8" itemLabel="Pesquisa: Pais"/>
+				    	</h:selectOneMenu>
 				   	</div>
 				   	<div class="col-md-3">
-					  <div class="radio">
-					    <label for="radios-0">
-					      <input type="radio" name="radios" id="radios-0" value="1" checked="checked"/>
-					      Option all
-					    </label>
-						</div>
-					  <div class="radio">
-					    <label for="radios-1">
-					      <input type="radio" name="radios" id="radios-1" value="2"/>
-					      Option one
-					    </label>
-						</div>
-						<div class="radio">
-					    <label for="radios-1">
-					      <input type="radio" name="radios" id="radios-1" value="2"/>
-					      Option two
-					    </label>
-						</div>
+				   	  <h:selectOneRadio value="#{listarInvestidorMB.filtroLinha}" class="radio" layout="pageDirection">
+					      <f:selectItem itemValue="1" itemLabel="Listar todas as linhas" />
+				    		<f:selectItem itemValue="2" itemLabel="Listar 1 Linha"/>
+				    		<f:selectItem itemValue="3" itemLabel="Listar 5 linhas"/>
+					    </h:selectOneRadio>
 					</div>	
 					<div class="col-md-3">
-				    	<select id="selectbasic" name="selectbasic" class="form-control">
-				      		<option value="1">Option one</option>
-				      		<option value="2">Option two</option>
-				    	</select>
+				    	<h:selectOneMenu value="#{listarInvestidorMB.filtroCondicional}" class="form-control">
+				    		<f:selectItem itemValue="1" itemLabel="Exatamente Igual"/>
+				    		<f:selectItem itemValue="2" itemLabel="Qualquer parte"/>
+				    		<f:selectItem itemValue="3" itemLabel="Inicio Igual"/>
+				    		<f:selectItem itemValue="4" itemLabel="Fim Igual"/>
+				    	</h:selectOneMenu>
 				   	</div>
 				   	<div class="col-md-3">
-				    	<select id="selectbasic" name="selectbasic" class="form-control">
-				      		<option value="1">Option one</option>
-				      		<option value="2">Option two</option>
-				    	</select>
+				    	<h:selectOneMenu value="#{listarInvestidorMB.filtroExclusivo}" class="form-control">
+				    		<f:selectItem itemValue="0" itemLabel="Seleção exclusiva"/>
+				    		<f:selectItem itemValue="1" itemLabel="Vazio"/>
+				    	</h:selectOneMenu>
 				   	</div>					    
 				</div>
 		    </div> <!-- /#top -->
-		 
+		 	</h:form>
 		     <hr />
+		     <h:form>
 		     <div id="list" class="row">
 		     	<div class="table-responsive col-md-12">
-			        <table class="table table-striped" cellspacing="0" cellpadding="0">
-			            <thead>
-			                <tr>
-			                    <th>ID</th>
-			                    <th>Nome</th>
-			                    <th>Plano</th>
-			                    <th>Data de Inscrição</th>
-			                    <th class="actions">Gerenciar</th>
-			                 </tr>
-			            </thead>
-			            <tbody>
-			 
-			                <tr>
-			                    <td>1001</td>
-			                    <td>Carlos Henrique Schroder</td>
-			                    <td>Prime</td>
-			                    <td>01/01/2015</td>
-			                    <td class="actions">
-			                        <a class="btn btn-success btn-xs" href="view.html">Visualizar</a>
-			                        <a class="btn btn-warning btn-xs" href="edit.html">Editar</a>
-			                        <a class="btn btn-danger btn-xs"  href="#" data-toggle="modal" data-target="#delete-modal">Excluir</a>
-			                    </td>
-			                </tr>
-			                
-			 
-			            </tbody>
-			         </table>
+		     	
+			        <h:dataTable  class="table table-striped" value="#{listarInvestidorMB.listaInvestidor}" var="investidor">
+			        <h:column><f:facet name="header">ID</f:facet>#{investidor.idInvestidor}</h:column>
+            <h:column><f:facet name="header">Nome</f:facet>#{investidor.nomeInvestidor}</h:column>
+            <h:column><f:facet name="header">email</f:facet>#{investidor.emailInvestidor}</h:column>
+            <h:column><f:facet name="header">Data Nascimento</f:facet>#{investidor.nascimentoInvestidor}</h:column>
+            <h:column><f:facet name="header">Empresas</f:facet>#{investidor.nomeEmpresaInvestidor}</h:column>
+            <h:column><f:facet name="header">Cidade</f:facet>#{investidor.cidadeInvestidor}</h:column>   
+            <h:column><f:facet name="header">Estado</f:facet>#{investidor.estadoInvestidor}</h:column>   
+            <h:column><f:facet name="header">Pais</f:facet>#{investidor.paisInvestidor}</h:column>   
+          
+                        
+            <h:column><f:facet name="header">Actions</f:facet>
+            	
+                
+                <h:commandButton class="btn btn-warning btn-xs"  
+                value="Editar"                 
+                action="#{listarInvestidorMB.editarInvestidor(investidor)}"/> &nbsp;
+                <h:commandButton class="btn btn-danger btn-xs"  
+                value="Excluir"                 
+                action="#{listarInvestidorMB.excluirInvestidor(investidor)}"/>
+                
+                
+            </h:column>
+        </h:dataTable>
+        
 			 
 			     </div>
 		     </div> <!-- /#list -->
-		 	
-		     <div id="bottom" class="row">
-		     	<div class="col-md-12">      
-			        <ul class="pagination">
-			            <li class="disabled"><a>&lt; Anterior</a></li>
-			            <li class="disabled"><a>1</a></li>
-			            <li><a href="#">2</a></li>
-			            <li><a href="#">3</a></li>
-			            <li class="next"><a href="#" rel="next">Próximo &gt;</a></li>
-			        </ul><!-- /.pagination -->
-			    </div>
-		     </div> <!-- /#bottom -->
+		 	</h:form>
+		     
 	 	</div>  <!-- /#main -->	
-	</section>		
+	</section>	
+		
 	</div>
 	
 	<!-- Modal -->
