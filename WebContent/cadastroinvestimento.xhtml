@@ -59,7 +59,7 @@
 				  <label class="col-md-4 control-label" for="textinput">Descrição do Pacote</label>  
 				  <div class="col-md-4">				  
 				  <h:inputText 
-				     value="#{investimentoMB.investimento.descricaoInvestimento}"
+				     value="#{incluirInvestimentoMB.investimento.descricaoInvestimento}"
 				     id="descricaoInvestimento" 
 				     required="true"
 				     requiredMessage="Por favor, preencha um nome/apelido para login"
@@ -75,7 +75,7 @@
 				  <label class="col-md-4 control-label" for="textinput">quantidade</label>  
 				  <div class="col-md-4">
 				  <h:inputText 
-				     value="#{investimentoMB.investimento.quantidadeInvestimento}"
+				     value="#{incluirInvestimentoMB.investimento.quantidadeInvestimento}"
 				     id="quantidadeInvestimento" 
 				     required="true"
 				     requiredMessage="Por favor, preencha um email valido"
@@ -91,7 +91,7 @@
 				  <label class="col-md-4 control-label" for="textinput">Valor Investimento</label>  
 				  <div class="col-md-4">
 				  <h:inputText
-				     value="#{investimentoMB.investimento.valorInvestimento}"
+				     value="#{incluirInvestimentoMB.investimento.valorInvestimento}"
 				     id="valorInvestimento" 
 				     required="true"
 				     requiredMessage="Por favor, digite uma senha entre 8 e 12 caracteres"
@@ -111,7 +111,7 @@
 				  <div class="col-md-4">				  
 				  <h:commandButton class="btn btn-skin" 
 				                   value="Pronto" 
-				                   action="#{investimentoMB.incluirInvestimento}" ></h:commandButton>
+				                   action="#{incluirInvestimentoMB.incluirInvestimento}" ></h:commandButton>
 				  <span class="help-block"></span>  
 				  </div>
 				</div>

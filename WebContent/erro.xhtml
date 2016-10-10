@@ -34,65 +34,40 @@
 <script src="js/respond.min.js"></script>
 <![endif]-->
 </h:head>
-
 <h:body>
-<ui:composition>
-<header>
-	<!-- /////////////////////////////////////////Navigation -->
-    <nav class="navbar navbar-default navbar-fixed-top">
-        <div class="container">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header page-scroll">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <h1 class="navbar-brand page-scroll">
-					<a href="#page-top">Área do Jangadeiro</a>
-				</h1>
-            </div>
-			
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <h:form>
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav navbar-right">
-                    <li class="hidden">
-                        <a href="#page-top"></a>
-                    </li>
-                    <li>
-                      
-                        <h:commandLink class="page-scroll" value="Noticias" action="#{listarNoticiasMB.listarNoticias}" />
-                       
-                    </li>
-                    <li>
-                    	
-                        <h:commandLink class="page-scroll" value="Clientes" action="#{listarClientesMB.listarClientes}" />
-                        
-                    </li>
-                    <li>
-                    	<h:commandLink class="page-scroll" value="Investimentos" action="#{listarInvestimentoMB.listarInvestimentos}" />
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="listainvestidores.jsf">Investidores</a>
-                    </li>
-                    <li>                    	
-                        <h:commandLink class="page-scroll" value="Configurar Acessos" action="#{listarAdministradorMB.listarAdministradores}" />                         
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="index.jsf">Sair</a>
-                    </li>
-                </ul>
-            </div>
-            </h:form>
-            <!-- /.navbar-collapse -->
-           
-        </div>
-        <!-- /.container-fluid -->
-    </nav>
-</header>
-</ui:composition>  
+
+	<div id="page-content">
+	<header>
+		<f:view>
+			<ui:include src="top.xhtml" />
+		</f:view>
+	</header>		
+		<section class="box-content box-style-1">
+			<form class="form-horizontal">
+				<fieldset>				
+					<!-- Form Name -->
+					<div class="row heading">
+						 <div class="col-lg-12">	
+		                    <h2 style="color: red;">ERRO</h2>
+		                    <hr class="line02" />
+	                    	<div class="intro">Pagina não Encontrada</div>
+		                </div>
+					</div>
+					
+					<div class="form-group">
+						<label class="col-md-4 control-label" for="textinput"></label>									
+					</div>		
+				</fieldset>
+			</form>				
+		</section>		
+	</div>
+	
+	<f:view>
+		<ui:include src="footer.xhtml" />
+	</f:view>		
+
+	<script src="js/lightbox-plus-jquery.min.js"></script>
+  
 	<!-- jQuery -->
 	<script type="text/javascript" src="js/jquery-2.1.1.js"></script>
 	<script type="text/javascript" src="js/bootstrap.min.js"></script>
@@ -108,7 +83,8 @@
 	<script type="text/javascript" src="js/wow.min.js"></script> 
 	<script type="text/javascript" src="js/jquery.isotope.js"></script> 
 	<script type="text/javascript" src="js/main.js"></script>
-		
+	
+	
 	<!-- carousel -->
 	<script src="owl-carousel/owl.carousel.js"></script>
     <script>

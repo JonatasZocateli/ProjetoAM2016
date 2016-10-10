@@ -16,8 +16,44 @@ public class CadastrarNoticias {
 	
 	private Noticias noticias;
 	private Part arquivo;
-	private String pesquisa; 
+	private String pesquisa;
+	private int filtroPrincipal;
+	private int filtroCondicional;
+	private int filtroExclusivo;
+	private int filtroLinha = 1;
+	private int tipoPesquisa;
 	
+	public int getFiltroExclusivo() {
+		return filtroExclusivo;
+	}
+
+	public void setFiltroExclusivo(int filtroExclusivo) {
+		this.filtroExclusivo = filtroExclusivo;
+	}
+
+	public int getFiltroCondicional() {
+		return filtroCondicional;
+	}
+
+	public void setFiltroCondicional(int filtroCondicional) {
+		this.filtroCondicional = filtroCondicional;
+	}
+
+	public int getTipoPesquisa() {
+		return tipoPesquisa;
+	}
+
+	public void setTipoPesquisa(int tipoPesquisa) {
+		this.tipoPesquisa = tipoPesquisa;
+	}
+
+	public int getFiltroPrincipal() {
+		return filtroPrincipal;
+	}
+
+	public void setFiltroPrincipal(int filtroPrincipal) {
+		this.filtroPrincipal = filtroPrincipal;
+	}
 
 	public String getPesquisa() {
 		return pesquisa;
@@ -43,6 +79,13 @@ public class CadastrarNoticias {
 		this.arquivo = arquivo;
 	}
 	
+	public int getFiltroLinha() {
+		return filtroLinha;
+	}
+
+	public void setFiltroLinha(int filtroLinha) {
+		this.filtroLinha = filtroLinha;
+	}
 	
 	public CadastrarNoticias(){
 		noticias = new Noticias();
@@ -67,7 +110,7 @@ public class CadastrarNoticias {
 			dao.persist(noticias);			
 			
 			
-			return "confirmacao";
+			return listarNoticias();
 		}catch(Exception e){
 			return "erro";
 		}
@@ -75,10 +118,30 @@ public class CadastrarNoticias {
 		
 	}
 	
+	public String atualizarNoticias(){
+		try{
+			IncluirImagem bo = new IncluirImagem();		
+			String urlImagem = bo.incluirImagem(arquivo);			
+			noticias.setUrlImagem(urlImagem);
+			
+			NoticiasDAO dao = new NoticiasDAO();
+			dao.attachDirty(noticias);			
+			
+			if (tipoPesquisa == 1)
+				return listarNoticias();
+			
+			return pesquisarNoticias();
+		}catch(Exception e){
+			return "erro";
+		}
+	}
+	
+	
 	public String listarNoticias(){
 		try{
-			List<Noticias> list = new NoticiasDAO().listaNoticias(noticias);
-			listaNoticias = new ArrayList<Noticias>(list);
+			NoticiasDAO dao = new NoticiasDAO();
+			listaNoticias = dao.listaNoticias();			
+			tipoPesquisa = 1;
 			
 			return "listagem";
 		}catch(Exception e){
@@ -88,8 +151,8 @@ public class CadastrarNoticias {
 	
 	public String listarNoticiasIndex(){
 		try{
-			List<Noticias> list = new NoticiasDAO().listaNoticias(noticias);
-			listaNoticias = new ArrayList<Noticias>(list);
+			NoticiasDAO dao = new NoticiasDAO();
+			listaNoticias = dao.listaNoticias();
 			
 			return "index";
 		}catch(Exception e){
@@ -102,7 +165,10 @@ public class CadastrarNoticias {
 			NoticiasDAO dao = new NoticiasDAO();
 			dao.delete(nt);		
 			
-			return listarNoticias();
+			if (tipoPesquisa == 1)
+				return listarNoticias();
+			
+			return pesquisarNoticias();
 		}catch(Exception e){
 			return "erro";
 		}
@@ -111,8 +177,10 @@ public class CadastrarNoticias {
 	
 	public String pesquisarNoticias(){
 		try{
-			FiltroPesquisas pesq = new FiltroPesquisas();			
-			listaNoticias = pesq.pesquisaConteudo(1, pesquisa);			
+			FiltroPesquisas pesq = new FiltroPesquisas();	
+			listaNoticias.clear();
+			listaNoticias = pesq.pesquisaNoticias(filtroPrincipal, filtroLinha, filtroCondicional, filtroExclusivo, pesquisa);			
+			tipoPesquisa  = 2;
 			
 			return "listagem";
 		}catch(Exception e){
@@ -120,6 +188,34 @@ public class CadastrarNoticias {
 		}
 		
 	}
+	
+	public String limparPesquisa(){
+		try{
+			pesquisa = null;
+			filtroPrincipal = 1;
+			filtroCondicional = 1;
+			filtroExclusivo = 0;
+			filtroLinha = 1;
+			tipoPesquisa = 1;
+			
+			return listarNoticias();
+		}catch(Exception e){
+			return "erro";
+		}
+		
+	}
+
+	public String editarNoticia(Noticias noticia){
+		try{
+			this.noticias = noticia;
+			
+			return "editarpostagem";
+		}catch(Exception e){
+			return "erro";
+		}
+	}
+
+	
 	
 	
 

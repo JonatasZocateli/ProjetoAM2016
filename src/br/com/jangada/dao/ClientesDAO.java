@@ -5,10 +5,13 @@ import java.util.List;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.hibernate.Criteria;
 import org.hibernate.LockMode;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.criterion.Example;
+import org.hibernate.criterion.MatchMode;
+import org.hibernate.criterion.Restrictions;
 
 import br.com.jangada.bd.Clientes;
 
@@ -50,7 +53,9 @@ public class ClientesDAO {
 	public void attachDirty(Clientes instance) {
 		log.debug("attaching dirty Clientes instance");
 		try {
+			sessionFactory.getCurrentSession().beginTransaction();
 			sessionFactory.getCurrentSession().saveOrUpdate(instance);
+			sessionFactory.getCurrentSession().beginTransaction().commit();
 			log.debug("attach successful");
 		} catch (RuntimeException re) {
 			log.error("attach failed", re);
@@ -75,6 +80,7 @@ public class ClientesDAO {
 			sessionFactory.getCurrentSession().beginTransaction();
 			sessionFactory.getCurrentSession().delete(persistentInstance);
 			sessionFactory.getCurrentSession().beginTransaction().commit();
+			
 			log.debug("delete successful");
 		} catch (RuntimeException re) {
 			log.error("delete failed", re);
@@ -93,6 +99,8 @@ public class ClientesDAO {
 			throw re;
 		}
 	}
+	
+	
 
 	public Clientes findById(java.lang.Integer id) {
 		log.debug("getting Clientes instance with id: " + id);
@@ -110,11 +118,15 @@ public class ClientesDAO {
 		}
 	}
 
-	public List findByExample(Clientes instance) {
+	public List<Clientes> findByExample(String pesqField,Object pesqValue) {
 		log.debug("finding Clientes instance by example");
 		try {
-			List results = sessionFactory.getCurrentSession().createCriteria("br.com.jangada.dao.Clientes")
-					.add(Example.create(instance)).list();
+			sessionFactory.getCurrentSession().beginTransaction();
+			Criteria criteria = sessionFactory.getCurrentSession().createCriteria(Clientes.class);	
+			criteria.add(Restrictions.eq(pesqField, pesqValue));
+			List<Clientes> results = criteria.list();
+			
+			sessionFactory.getCurrentSession().beginTransaction().commit();
 			log.debug("find by example successful, result size: " + results.size());
 			return results;
 		} catch (RuntimeException re) {
@@ -123,11 +135,52 @@ public class ClientesDAO {
 		}
 	}
 	
-	public List listarClientes(Clientes instance) {
+	public List<Clientes> findByConteudo(String pesqField, String pesqValue, int filtroLinha,
+			int filtroConteudo, int filtroExclusivo) {
+		log.debug("finding Noticias instance by example");
+		try {
+			sessionFactory.getCurrentSession().beginTransaction();
+			Criteria criteria = sessionFactory.getCurrentSession().createCriteria(Clientes.class);
+			
+			if (filtroExclusivo == 0){
+				switch (filtroConteudo) {
+				case 2:
+					criteria.add(Restrictions.ilike(pesqField, pesqValue, MatchMode.ANYWHERE));
+					break;
+				case 3:
+					criteria.add(Restrictions.ilike(pesqField, pesqValue, MatchMode.START));
+					break;	
+				case 4:
+					criteria.add(Restrictions.ilike(pesqField, pesqValue, MatchMode.END));
+					break;				
+				}
+			}	
+			else
+				criteria.add(Restrictions.isNull(pesqField));	
+			if (filtroLinha == 2)
+				criteria.setMaxResults(1);	
+			else
+				if (filtroLinha == 3)
+					criteria.setMaxResults(5);		
+			
+			List<Clientes> results = criteria.list();
+			
+			sessionFactory.getCurrentSession().beginTransaction().commit();
+			
+			log.debug("find by example successful, result size: " + results.size());
+			return results;
+		} catch (RuntimeException re) {
+			log.error("find by example failed", re);
+			throw re;
+		}
+	}
+	
+	public List listarClientes() {
 		log.debug("finding Administador instance by example");
 		try {
 			sessionFactory.getCurrentSession().beginTransaction();
-			List results = sessionFactory.getCurrentSession().createCriteria(instance.getClass()).list();
+			Criteria criteria = sessionFactory.getCurrentSession().createCriteria(Clientes.class);			
+			List results = criteria.list();
 			sessionFactory.getCurrentSession().beginTransaction().commit();
 			
 			//= sessionFactory.getCurrentSession().createCriteria("br.com.jangada.dao.Administador")

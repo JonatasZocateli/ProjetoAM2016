@@ -18,6 +18,7 @@ import org.hibernate.annotations.Where;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.criterion.Criterion;
 import org.hibernate.criterion.Example;
+import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Restrictions;
 
 import com.sun.javafx.fxml.expression.Expression;
@@ -63,7 +64,10 @@ public class NoticiasDAO {
 	public void attachDirty(Noticias instance) {
 		log.debug("attaching dirty Noticias instance");
 		try {
+			sessionFactory.getCurrentSession().beginTransaction();
 			sessionFactory.getCurrentSession().saveOrUpdate(instance);
+			sessionFactory.getCurrentSession().beginTransaction().commit();
+			
 			log.debug("attach successful");
 		} catch (RuntimeException re) {
 			log.error("attach failed", re);
@@ -127,7 +131,47 @@ public class NoticiasDAO {
 		log.debug("finding Noticias instance by example");
 		try {
 			sessionFactory.getCurrentSession().beginTransaction();
-			Criteria criteria = sessionFactory.getCurrentSession().createCriteria(Noticias.class).add(Restrictions.eq(pesqField, pesqValue));	
+			Criteria criteria = sessionFactory.getCurrentSession().createCriteria(Noticias.class);	
+			criteria.add(Restrictions.eq(pesqField, pesqValue));
+			List<Noticias> results = criteria.list();
+			
+			sessionFactory.getCurrentSession().beginTransaction().commit();
+			
+			log.debug("find by example successful, result size: " + results.size());
+			return results;
+		} catch (RuntimeException re) {
+			log.error("find by example failed", re);
+			throw re;
+		}
+	}
+	
+	public List<Noticias> findByConteudo(String pesqField, String pesqValue, int filtroLinha,
+			int filtroConteudo, int filtroExclusivo) {
+		log.debug("finding Noticias instance by example");
+		try {
+			sessionFactory.getCurrentSession().beginTransaction();
+			Criteria criteria = sessionFactory.getCurrentSession().createCriteria(Noticias.class);
+			
+			if (filtroExclusivo == 0){
+				switch (filtroConteudo) {
+				case 2:
+					criteria.add(Restrictions.ilike(pesqField, pesqValue, MatchMode.ANYWHERE));
+					break;
+				case 3:
+					criteria.add(Restrictions.ilike(pesqField, pesqValue, MatchMode.START));
+					break;	
+				case 4:
+					criteria.add(Restrictions.ilike(pesqField, pesqValue, MatchMode.END));
+					break;				
+				}
+			}	
+			else
+				criteria.add(Restrictions.isNull(pesqField));	
+			if (filtroLinha == 2)
+				criteria.setMaxResults(1);	
+			else
+				if (filtroLinha == 3)
+					criteria.setMaxResults(5);		
 			
 			List<Noticias> results = criteria.list();
 			
@@ -141,14 +185,14 @@ public class NoticiasDAO {
 		}
 	}
 	
-	public List<Noticias> listaNoticias(Noticias instance){
+	public List listaNoticias(){
 		log.debug("finding Administador instance by example");
 		try {
 			
-			List<Noticias> results = new ArrayList<Noticias>();
 			
-			sessionFactory.getCurrentSession().beginTransaction();
-			results = sessionFactory.getCurrentSession().createCriteria(instance.getClass()).list();
+			sessionFactory.getCurrentSession().beginTransaction();			
+			Criteria criteria = sessionFactory.getCurrentSession().createCriteria(Noticias.class);			
+			List results = criteria.list();
 			sessionFactory.getCurrentSession().beginTransaction().commit();
 			
 			//= sessionFactory.getCurrentSession().createCriteria("br.com.jangada.dao.Administador")

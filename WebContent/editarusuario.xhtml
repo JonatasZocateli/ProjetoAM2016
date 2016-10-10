@@ -59,7 +59,7 @@
 				  <label class="col-md-4 control-label" for="textinput">Login</label>  
 				  <div class="col-md-4">				  
 				  <h:inputText 
-				     value="#{incluirAdministradorMB.administrador.loginAdministrador}"
+				     value="#{listarAdministradorMB.administrador.loginAdministrador}"
 				     id="loginAdministrador" 
 				     required="true"
 				     requiredMessage="Por favor, preencha um nome/apelido para login"
@@ -75,7 +75,7 @@
 				  <label class="col-md-4 control-label" for="textinput">Email</label>  
 				  <div class="col-md-4">
 				  <h:inputText 
-				     value="#{incluirAdministradorMB.administrador.email}"
+				     value="#{listarAdministradorMB.administrador.email}"
 				     id="emailAdministrador" 
 				     required="true"
 				     requiredMessage="Por favor, preencha um email valido"
@@ -91,7 +91,7 @@
 				  <label class="col-md-4 control-label" for="textinput">Senha</label>  
 				  <div class="col-md-4">
 				  <h:inputSecret 
-				     value="#{incluirAdministradorMB.administrador.senhaAdministrador}"
+				     value="#{listarAdministradorMB.administrador.senhaAdministrador}"
 				     id="senhaAdministrador" 
 				     required="true"
 				     requiredMessage="Por favor, digite uma senha entre 8 e 12 caracteres"
@@ -111,7 +111,7 @@
 				  <label class="col-md-4 control-label" for="textinput">Repetir Senha</label>  
 				  <div class="col-md-4">
 				  <h:inputSecret 
-				     value="#{incluirAdministradorMB.repetirSenha}"
+				     value="#{listarAdministradorMB.repetirSenha}"
 				     id="repetirSenha" 
 				     required="true"
 				     requiredMessage="Por favor, digite uma senha entre 8 e 12 caracteres"
@@ -131,7 +131,10 @@
 				  <div class="col-md-4">				  
 				  <h:commandButton class="btn btn-skin" 
 				                   value="Pronto" 
-				                   action="#{incluirAdministradorMB.incluirAdministrador}" ></h:commandButton>
+				                   action="#{listarAdministradorMB.atualizarAdministrador}" ></h:commandButton>&nbsp;
+				  <h:commandButton class="btn btn-danger" immediate="true" 
+				                   value="Cancelar Edição" 
+				                   action="listausuarios.xhtml" ></h:commandButton>   
 				  <span class="help-block"></span>  
 				  </div>
 				</div>

@@ -60,7 +60,7 @@
 				  <div class="col-md-4">
 				  
 				  <h:inputText 
-				     value="#{incluirClientesMB.cliente.nomeCliente}"
+				     value="#{listarClientesMB.cliente.nomeCliente}"
 				     id="nomeCliente" 
 				     required="true"
 				     requiredMessage="Por favor, preencha o Nome completo"
@@ -76,7 +76,7 @@
 				  <label class="col-md-4 control-label" for="textinput">Data de Nascimento</label>  
 				  <div class="col-md-4">
 				  <h:inputText
-				     value="#{incluirClientesMB.cliente.nascimentoCliente}"
+				     value="#{listarClientesMB.cliente.nascimentoCliente}"
 				     id="nascimentoCliente"	
 				     required="true"
 				     requiredMessage="Por favor, preencha a data de nascimento"
@@ -94,7 +94,7 @@
 				  <label class="col-md-4 control-label" for="textinput">CPF</label>  
 				  <div class="col-md-4">				  
 				  <h:inputText 
-				     value="#{incluirClientesMB.cliente.cpfCliente}"
+				     value="#{listarClientesMB.cliente.cpfCliente}"
 				     id="cpfCliente" 
 				     required="true"
 				     requiredMessage="Por favor, preencha o CPF"
@@ -114,7 +114,7 @@
 				  <label class="col-md-4 control-label" for="textinput">Email</label>  
 				  <div class="col-md-4">
 				  <h:inputText 
-				     value="#{incluirClientesMB.cliente.emailCliente}"
+				     value="#{listarClientesMB.cliente.emailCliente}"
 				     id="emailCliente" 
 				     required="true"
 				     requiredMessage="Por favor, preencha o email"
@@ -129,7 +129,7 @@
 				  <label class="col-md-4 control-label" for="textinput">CEP</label>  
 				  <div class="col-md-4">				  
 				  <h:inputText 
-				     value="#{incluirClientesMB.cliente.cepCliente}"
+				     value="#{listarClientesMB.cliente.cepCliente}"
 				     id="cepCliente" 
 				     required="true"
 				     requiredMessage="Por favor, preencha o CPF"
@@ -149,7 +149,7 @@
 				  <label class="col-md-4 control-label" for="textinput">Logradouro</label>  
 				  <div class="col-md-4">
 				  <h:inputText 
-				     value="#{incluirClientesMB.cliente.logradouroCliente}"
+				     value="#{listarClientesMB.cliente.logradouroCliente}"
 				     id="logradouroCliente" 
 				     class="form-control input-md">
 				     </h:inputText>		  
@@ -162,7 +162,7 @@
 				  <label class="col-md-4 control-label" for="textinput">Bairro</label>  
 				  <div class="col-md-4">				  
 				  <h:inputText 
-				     value="#{incluirClientesMB.cliente.bairroCliente}"
+				     value="#{listarClientesMB.cliente.bairroCliente}"
 				     id="bairroCliente" 
 				     class="form-control input-md">
 				     </h:inputText>	
@@ -175,7 +175,7 @@
 				  <label class="col-md-4 control-label" for="textinput">Cidade</label>  
 				  <div class="col-md-4">
 				  <h:inputText 
-				     value="#{incluirClientesMB.cliente.cidadeCliente}"
+				     value="#{listarClientesMB.cliente.cidadeCliente}"
 				     id="cidadeCliente" 
 				     class="form-control input-md">
 				     </h:inputText>
@@ -188,7 +188,7 @@
 				  <label class="col-md-4 control-label" for="textinput">Estado/Província</label>  
 				  <div class="col-md-4">				  
 				  <h:inputText 
-				     value="#{incluirClientesMB.cliente.estadoCliente}"
+				     value="#{listarClientesMB.cliente.estadoCliente}"
 				     id="estadoCliente" 
 				     class="form-control input-md">
 				     <f:validateLength minimum="2" maximum="2"/>
@@ -203,7 +203,7 @@
 				  <label class="col-md-4 control-label" for="textinput">País</label>  
 				  <div class="col-md-4">				  
 				  <h:inputText 
-				     value="#{incluirClientesMB.cliente.paisCliente}"
+				     value="#{listarClientesMB.cliente.paisCliente}"
 				     id="paisCliente" 
 				     class="form-control input-md">
 				     </h:inputText>
@@ -217,7 +217,11 @@
 				  <div class="col-md-4">				  
 				  <h:commandButton class="btn btn-skin" 
 				                   value="Pronto" 
-				                   action="#{incluirClientesMB.incluirClientes}" ></h:commandButton>
+				                   action="#{listarClientesMB.atualizarClientes}" ></h:commandButton>
+				                   &nbsp;
+				  <h:commandButton class="btn btn-danger" immediate="true"
+				                   value="Cancelar Edição" 
+				                   action="listaclientes.xhtml" ></h:commandButton>   
 				  <span class="help-block"></span>  
 				  </div>
 				</div>

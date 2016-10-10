@@ -39,99 +39,91 @@
 	<div id="page-content">
 	<header>
 		<f:view>
-			<ui:include src="top.xhtml" />
+			<ui:include src="topadm.xhtml" />
 		</f:view>
 	</header>		
 		<section class="box-content box-style-1">
-			<h:form class="form-horizontal">
+			<h:form class="form-horizontal" enctype="multipart/form-data" >
 				<fieldset>				
 				<!-- Form Name -->
 				<div class="row heading">
 					 <div class="col-lg-12">	
-	                    <h2>Cadastro de Usuário</h2>
-	                    <hr class="line02" />
-                    	<div class="intro">Cadastro de novos Usuários</div>
+	                    <h2>NOVA POSTAGEM</h2>
+	                    <hr class="line02" />                    	
 	                </div>
 				</div>
 				
 				<!-- Text input-->
 				<div class="form-group">
-				  <label class="col-md-4 control-label" for="textinput">Login</label>  
+				  <label class="col-md-4 control-label" for="textinput">Título</label>  
 				  <div class="col-md-4">				  
-				  <h:inputText 
-				     value="#{incluirAdministradorMB.administrador.loginAdministrador}"
-				     id="loginAdministrador" 
+				  <h:inputText
+				     value="#{listarNoticiasMB.noticias.tituloNoticia}"
+				     id="tituloNoticia" 
 				     required="true"
-				     requiredMessage="Por favor, preencha um nome/apelido para login"
-				     class="form-control input-md">
+				     requiredMessage="Por favor, digite o titulo da notícia"
+				     class="form-control input-md">				     			     
 				     </h:inputText>		  
-				     <h:message for="loginAdministrador" style="color:red"/>
+				     <h:message for="tituloNoticia" style="color:red"/>
 				  <span class="help-block"></span>  
 				  </div>
 				</div>
 				
 				<!-- Text input-->
 				<div class="form-group">
-				  <label class="col-md-4 control-label" for="textinput">Email</label>  
+				  <label class="col-md-4 control-label" for="textinput">Sub-título</label>  
 				  <div class="col-md-4">
-				  <h:inputText 
-				     value="#{incluirAdministradorMB.administrador.email}"
-				     id="emailAdministrador" 
+				  <h:inputText
+				     value="#{listarNoticiasMB.noticias.subtituloNoticia}"
+				     id="subtituloNoticia" 
 				     required="true"
-				     requiredMessage="Por favor, preencha um email valido"
-				     class="form-control input-md">
-				     </h:inputText>
-				     <h:message for="emailAdministrador" style="color:red"/>
+				     requiredMessage="Por favor, digite o subtítulo da notícia"
+				     class="form-control input-md">				     			     
+				     </h:inputText>		  
+				     <h:message for="subtituloNoticia" style="color:red"/>
 				  <span class="help-block"></span>  
 				  </div>
 				</div>
 				
-				<!-- Text input-->
+				<!-- File Button --> 
 				<div class="form-group">
-				  <label class="col-md-4 control-label" for="textinput">Senha</label>  
+				  <label class="col-md-4 control-label" for="filebutton">Imagem</label>
 				  <div class="col-md-4">
-				  <h:inputSecret 
-				     value="#{incluirAdministradorMB.administrador.senhaAdministrador}"
-				     id="senhaAdministrador" 
-				     required="true"
-				     requiredMessage="Por favor, digite uma senha entre 8 e 12 caracteres"
-				     validatorMessage="a senha informada não está entre 8 e 12 caracteres"
-				     converterMessage=""
-				     class="form-control input-md">				     
-				     <f:validateLength minimum="8" maximum="12"/>				     
-				     </h:inputSecret>		  
-				     <h:message for="senhaAdministrador" style="color:red"/> 
-				  <span class="help-block"></span>  
+				    
+				    <h:inputFile 
+				      value="#{listarNoticiasMB.arquivo}"
+				      id="arquivo"
+				      class="form-control input-md">				    
+				    </h:inputFile>
+				    					    
 				  </div>
 				</div>
 				
-				
-				<!-- Text input-->
+				<!-- Textarea -->
 				<div class="form-group">
-				  <label class="col-md-4 control-label" for="textinput">Repetir Senha</label>  
+				  <label class="col-md-4 control-label" for="textarea">Conteúdo</label>
 				  <div class="col-md-4">
-				  <h:inputSecret 
-				     value="#{incluirAdministradorMB.repetirSenha}"
-				     id="repetirSenha" 
+				     <h:inputTextarea 
+				     value="#{listarNoticiasMB.noticias.conteudoNoticia}"
+				     id="conteudoNoticia" 
 				     required="true"
-				     requiredMessage="Por favor, digite uma senha entre 8 e 12 caracteres"
-				     validatorMessage="a senha informada não está entre 8 e 12 caracteres"
-				     converterMessage=""
-				     class="form-control input-md">				     
-				     <f:validateLength minimum="8" maximum="12"/>				     
-				     </h:inputSecret>		  
-				     <h:message for="repetirSenha" style="color:red"/> 	
-				  <span class="help-block"></span>  
+				     requiredMessage="Por favor, digite o conteúdo da notícia"
+				     class="form-control input-md">				     			     
+				     </h:inputTextarea>		  
+				     <h:message for="conteudoNoticia" style="color:red"/>
 				  </div>
-				</div>
-						
+				</div>		
+																							
 				<!-- Text input-->
 				<div class="form-group">
 				  <label class="col-md-4 control-label" for="textinput"></label>  
-				  <div class="col-md-4">				  
+				  <div class="col-md-4">
 				  <h:commandButton class="btn btn-skin" 
 				                   value="Pronto" 
-				                   action="#{incluirAdministradorMB.incluirAdministrador}" ></h:commandButton>
+				                   action="#{listarNoticiasMB.atualizarNoticias}" ></h:commandButton>&nbsp;
+				  <h:commandButton class="btn btn-danger" immediate="true" 
+				                   value="Cancelar Edição" 
+				                   action="listagem.xhtml" ></h:commandButton>                 
 				  <span class="help-block"></span>  
 				  </div>
 				</div>
@@ -141,16 +133,10 @@
 						
 					</label>
 				</div>
-				</fieldset>
-				
-				
+				</fieldset>								
 			</h:form>				
 		</section>		
-	</div>
-	
-	<f:view>
-		<ui:include src="footer.xhtml" />
-	</f:view>		
+	</div>		
 
 	<script src="js/lightbox-plus-jquery.min.js"></script>
   

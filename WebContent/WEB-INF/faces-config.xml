@@ -4,12 +4,7 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd"
     version="2.2">
-	<application>
-		<message-bundle>resources.application</message-bundle>
-		<locale-config>
-			<default-locale>en</default-locale>
-		</locale-config>
-	</application>
+	
 	<managed-bean>
 		<managed-bean-name>incluirClientesMB</managed-bean-name>
 		  <managed-bean-class>br.com.jangada.managedbean.CadastrarCliente</managed-bean-class>
@@ -60,4 +55,10 @@
 		  <managed-bean-class>br.com.jangada.managedbean.CadastrarInvestimento</managed-bean-class>
 		  <managed-bean-scope>session</managed-bean-scope>	
 	</managed-bean>
+	<application>
+		<message-bundle>resources.application</message-bundle>
+		<locale-config>
+			<default-locale>en</default-locale>
+		</locale-config>
+	</application>
 </faces-config>

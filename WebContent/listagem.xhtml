@@ -45,11 +45,11 @@
 		
 	<section class="box-content box-style-1">
 		<div id="main" class="container-fluid">
-			<h:form>
+			<h:form>	
 		     <div id="top" class="row">
 	 		    <div class="col-md-3">
 			        <h2>Notícias</h2>
-			    </div>			 
+			    </div>		 
 			    <div class="col-md-6">
 			        <div class="input-group h2">
 			            			            
@@ -59,77 +59,72 @@
 				     		required="true"
 				     		requiredMessage="Por favor, Informe um valor para pesquisa"
 				     		class="form-control"
-				     	  	title="Pesquisar Itens">
+				     	  	title="Pesquisar Noticias">
 				     	</h:inputText>		  
 				     	<h:message for="pesquisa" style="color:red"/>
 			            
 			            <span class="input-group-btn">
 			            <h:commandLink class="btn btn-skin" action="#{listarNoticiasMB.pesquisarNoticias}">
-			            <span class="glyphicon glyphicon-search"></span>
-			            
-			            </h:commandLink>
+			            <span class="glyphicon glyphicon-search"></span>			            
+			            </h:commandLink> 
+			            </span> &nbsp;
+			            <span class="input-group-btn">
+			            <h:commandLink class="btn btn-skin" immediate="true"  value="Limpar Pesquisa" action="#{listarNoticiasMB.limparPesquisa}"/>	
 			            </span>
 			        </div>				        
 			    </div>
-			 
+			   
+			  
 			    <div class="col-md-3">
-			        <a href="novapostagem.jsf" class="btn btn-skin pull-right h2">Nova Postagem</a>
+			        <h:commandLink class="btn btn-skin pull-right h2" immediate="true" value="Nova Postagem" action="novapostagem.xhtml" />
 			    </div>
+			    
 			   </div> 
+			   
 			   <div id="top" class="row">
 			    <!-- Select Basic -->
 				<div class="form-group">	
-					<label class="col-md-3 control-label" for="selectbasic">Filtro 1</label>
-					<label class="col-md-3 control-label" for="selectbasic">Filtro 2</label>
-					<label class="col-md-3 control-label" for="selectbasic">Filtro 3</label>
-					<label class="col-md-3 control-label" for="selectbasic">Filtro 4</label>					  
+					<label class="col-md-3 control-label" for="selectbasic">Filtro Campo</label>
+					<label class="col-md-3 control-label" for="selectbasic">Filtro Linha</label>
+					<label class="col-md-3 control-label" for="selectbasic">Filtro Condição</label>
+					<label class="col-md-3 control-label" for="selectbasic">Filtro Exclusivo</label>					  
 				</div>
 		     </div> <!-- /#top -->
 		   <div id="top" class="row">
 			    <!-- Select Basic -->
 				<div class="form-group">											  
 				 	<div class="col-md-3">
-				    	<select id="selectbasic" name="selectbasic" class="form-control">
-				      		<option value="1">Option one</option>
-				      		<option value="2">Option two</option>
-				    	</select>
+				    	<h:selectOneMenu value="#{listarNoticiasMB.filtroPrincipal}" class="form-control">
+				    		<f:selectItem itemValue="1" itemLabel="Pesquisa: ID"/>
+				    		<f:selectItem itemValue="2" itemLabel="Pesquisa: Titulo"/>
+				    		<f:selectItem itemValue="3" itemLabel="Pesquisa: Sub-Titulo"/>
+				    		<f:selectItem itemValue="4" itemLabel="Pesquisa: Conteudo"/>
+				    	</h:selectOneMenu>
 				   	</div>
 				   	<div class="col-md-3">
-					  <div class="radio">
-					    <label for="radios-0">
-					      <input type="radio" name="radios" id="radios-0" value="1" checked="checked"/>
-					      Option all
-					    </label>
-						</div>
-					  <div class="radio">
-					    <label for="radios-1">
-					      <input type="radio" name="radios" id="radios-1" value="2"/>
-					      Option one
-					    </label>
-						</div>
-						<div class="radio">
-					    <label for="radios-1">
-					      <input type="radio" name="radios" id="radios-1" value="2"/>
-					      Option two
-					    </label>
-						</div>
+				   	  <h:selectOneRadio value="#{listarNoticiasMB.filtroLinha}" class="radio" layout="pageDirection">
+					      <f:selectItem itemValue="1" itemLabel="Listar todas as linhas" />
+				    		<f:selectItem itemValue="2" itemLabel="Listar 1 Linha"/>
+				    		<f:selectItem itemValue="3" itemLabel="Listar 5 linhas"/>
+					    </h:selectOneRadio>
 					</div>	
 					<div class="col-md-3">
-				    	<select id="selectbasic" name="selectbasic" class="form-control">
-				      		<option value="1">Option one</option>
-				      		<option value="2">Option two</option>
-				    	</select>
+				    	<h:selectOneMenu value="#{listarNoticiasMB.filtroCondicional}" class="form-control">
+				    		<f:selectItem itemValue="1" itemLabel="Exatamente Igual"/>
+				    		<f:selectItem itemValue="2" itemLabel="Qualquer parte"/>
+				    		<f:selectItem itemValue="3" itemLabel="Inicio Igual"/>
+				    		<f:selectItem itemValue="4" itemLabel="Fim Igual"/>
+				    	</h:selectOneMenu>
 				   	</div>
 				   	<div class="col-md-3">
-				    	<select id="selectbasic" name="selectbasic" class="form-control">
-				      		<option value="1">Option one</option>
-				      		<option value="2">Option two</option>
-				    	</select>
+				    	<h:selectOneMenu value="#{listarNoticiasMB.filtroExclusivo}" class="form-control">
+				    		<f:selectItem itemValue="0" itemLabel="Seleção exclusiva"/>
+				    		<f:selectItem itemValue="1" itemLabel="Vazio"/>
+				    	</h:selectOneMenu>
 				   	</div>					    
 				</div>
 		    </div> <!-- /#top -->
 		 	</h:form>
-		 	
 		     <hr />
 		     <h:form>
 		     <div id="list" class="row">
@@ -143,7 +138,10 @@
             <h:column><f:facet name="header">Data Publicação</f:facet>#{noticia.dataHoraNoticia}</h:column>            
             <h:column><f:facet name="header">Actions</f:facet>
             	
-                <a class="btn btn-warning btn-xs" href="edit.html">Editar</a>  &nbsp;
+                
+                <h:commandButton class="btn btn-warning btn-xs"  
+                value="Editar"                 
+                action="#{listarNoticiasMB.editarNoticia(noticia)}"/> &nbsp;
                 <h:commandButton class="btn btn-danger btn-xs"  
                 value="Excluir"                 
                 action="#{listarNoticiasMB.excluirNoticias(noticia)}"/>

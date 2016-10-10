@@ -12,7 +12,7 @@ public class ValidarLogin {
 			Boolean uservalido = false;
 			
 			AdministradorDAO dao = new AdministradorDAO();
-			List<Administrador> list = dao.findByExample(adm);
+			List<Administrador> list = dao.listaAdministrador();
 			
 			if(! list.isEmpty())
 				uservalido = true;

@@ -44,17 +44,29 @@
 	</header>	
 	<section class="box-content box-style-1">
 		<div id="main" class="container-fluid">
+		<h:form>
 		     <div id="top" class="row">
 	 		    <div class="col-md-3">
 			        <h2>Clientes</h2>
 			    </div>			 
 			    <div class="col-md-6">
-			        <div class="input-group h2">
-			            <input name="data[search]" class="form-control" id="search" type="text" placeholder="Pesquisar Clientes"/>
+			        <div class="input-group h2">			            
+			            <h:inputText  name="data[search]"
+				     		value="#{listarClientesMB.pesquisa}"
+				     		id="pesquisa" 
+				     		required="true"
+				     		requiredMessage="Por favor, Informe um valor para pesquisa"
+				     		class="form-control"
+				     	  	title="Pesquisar Clientes">
+				     	</h:inputText>		  
+				     	<h:message for="pesquisa" style="color:red"/>
 			            <span class="input-group-btn">
-			                <button class="btn btn-skin" type="submit">
-			                    <span class="glyphicon glyphicon-search"></span>
-			                </button>
+			            <h:commandLink class="btn btn-skin" action="#{listarClientesMB.pesquisarClientes}">
+			            <span class="glyphicon glyphicon-search"></span>			            
+			            </h:commandLink> 
+			            </span> &nbsp;
+			            <span class="input-group-btn">
+			            <h:commandLink class="btn btn-skin" immediate="true"  value="Limpar Pesquisa" action="#{listarClientesMB.limparPesquisa}"/>	
 			            </span>
 			        </div>				        
 			    </div>
@@ -62,60 +74,57 @@
 			   <div id="top" class="row">
 			    <!-- Select Basic -->
 				<div class="form-group">	
-					<label class="col-md-3 control-label" for="selectbasic">Filtro 1</label>
-					<label class="col-md-3 control-label" for="selectbasic">Filtro 2</label>
-					<label class="col-md-3 control-label" for="selectbasic">Filtro 3</label>
-					<label class="col-md-3 control-label" for="selectbasic">Filtro 4</label>					  
+					<label class="col-md-3 control-label" for="selectbasic">Filtro Campo</label>
+					<label class="col-md-3 control-label" for="selectbasic">Filtro Linha</label>
+					<label class="col-md-3 control-label" for="selectbasic">Filtro Condição</label>
+					<label class="col-md-3 control-label" for="selectbasic">Filtro Exclusivo</label>					  
 				</div>
 		     </div> <!-- /#top -->
 		   <div id="top" class="row">
 			    <!-- Select Basic -->
 				<div class="form-group">											  
 				 	<div class="col-md-3">
-				    	<select id="selectbasic" name="selectbasic" class="form-control">
-				      		<option value="1">Option one</option>
-				      		<option value="2">Option two</option>
-				    	</select>
+				    	<h:selectOneMenu value="#{listarClientesMB.filtroPrincipal}" class="form-control">
+				    		<f:selectItem itemValue="1" itemLabel="Pesquisa: ID"/>
+				    		<f:selectItem itemValue="2" itemLabel="Pesquisa: Nome"/>
+				    		<f:selectItem itemValue="3" itemLabel="Pesquisa: email"/>
+				    		<f:selectItem itemValue="4" itemLabel="Pesquisa: Data Nascimento"/>
+				    		<f:selectItem itemValue="5" itemLabel="Pesquisa: Bairro"/>
+				    		<f:selectItem itemValue="6" itemLabel="Pesquisa: Cidade"/>
+				    		<f:selectItem itemValue="7" itemLabel="Pesquisa: Estado"/>
+				    		<f:selectItem itemValue="8" itemLabel="Pesquisa: País"/>
+				    	</h:selectOneMenu>
 				   	</div>
 				   	<div class="col-md-3">
-					  <div class="radio">
-					    <label for="radios-0">
-					      <input type="radio" name="radios" id="radios-0" value="1" checked="checked"/>
-					      Option all
-					    </label>
-						</div>
-					  <div class="radio">
-					    <label for="radios-1">
-					      <input type="radio" name="radios" id="radios-1" value="2"/>
-					      Option one
-					    </label>
-						</div>
-						<div class="radio">
-					    <label for="radios-1">
-					      <input type="radio" name="radios" id="radios-1" value="2"/>
-					      Option two
-					    </label>
-						</div>
+					  <h:selectOneRadio value="#{listarClientesMB.filtroLinha}" class="radio" layout="pageDirection">
+					      <f:selectItem itemValue="1" itemLabel="Listar todas as linhas" />
+				    		<f:selectItem itemValue="2" itemLabel="Listar 1 Linha"/>
+				    		<f:selectItem itemValue="3" itemLabel="Listar 5 linhas"/>
+					    </h:selectOneRadio>
 					</div>	
 					<div class="col-md-3">
-				    	<select id="selectbasic" name="selectbasic" class="form-control">
-				      		<option value="1">Option one</option>
-				      		<option value="2">Option two</option>
-				    	</select>
+				    	<h:selectOneMenu value="#{listarClientesMB.filtroCondicional}" class="form-control">
+				    		<f:selectItem itemValue="1" itemLabel="Exatamente Igual"/>
+				    		<f:selectItem itemValue="2" itemLabel="Qualquer parte"/>
+				    		<f:selectItem itemValue="3" itemLabel="Inicio Igual"/>
+				    		<f:selectItem itemValue="4" itemLabel="Fim Igual"/>
+				    	</h:selectOneMenu>
 				   	</div>
 				   	<div class="col-md-3">
-				    	<select id="selectbasic" name="selectbasic" class="form-control">
-				      		<option value="1">Option one</option>
-				      		<option value="2">Option two</option>
-				    	</select>
+				    	<h:selectOneMenu value="#{listarClientesMB.filtroExclusivo}" class="form-control">
+				    		<f:selectItem itemValue="0" itemLabel="Seleção exclusiva"/>
+				    		<f:selectItem itemValue="1" itemLabel="Vazio"/>
+				    	</h:selectOneMenu>
 				   	</div>					    
 				</div>
 		    </div> <!-- /#top -->
-		 
+		    </h:form>
+		 	<h:form>
 		     <hr />
 		     <div id="list" class="row">
 		     	<div class="table-responsive col-md-12">
-		     	   <h:dataTable  class="table table-striped" value="#{clientesMB.listaCliente}" var="cliente">
+		     	   <h:dataTable  class="table table-striped" value="#{listarClientesMB.listaCliente}" var="cliente">
+		    <h:column><f:facet name="header">ID</f:facet>#{cliente.idClientes}</h:column> 	   
             <h:column><f:facet name="header">Nome</f:facet>#{cliente.nomeCliente}</h:column>
             <h:column><f:facet name="header">Data de Nascimento</f:facet>#{cliente.nascimentoCliente}</h:column>
             <h:column><f:facet name="header">Email</f:facet>#{cliente.emailCliente}</h:column>
@@ -125,20 +134,22 @@
             <h:column><f:facet name="header">Estado</f:facet>#{cliente.estadoCliente}</h:column>
             <h:column><f:facet name="header">País</f:facet>#{cliente.paisCliente}</h:column>
             <h:column><f:facet name="header">Actions</f:facet>
-            <h:form>
-                <a class="btn btn-warning btn-xs" href="edit.html">Editar</a>  &nbsp;
+            
+                <h:commandButton  class="btn btn-warning btn-xs" 
+                value="Editar" 
+                action="#{listarClientesMB.editarCliente(cliente)}"/>  &nbsp;
                 <h:commandButton  class="btn btn-danger btn-xs" 
                 value="Excluir" 
-                action="#{clientesMB.excluirCliente(cliente)}"/>
+                action="#{listarClientesMB.excluirCliente(cliente)}"/>
                 
-                </h:form>
+                
             </h:column>
         </h:dataTable>
 			        
 			 
 			     </div>
 		     </div> <!-- /#list -->
-		 	
+		 </h:form>	
 		    
 	 	</div>  <!-- /#main -->	
 	</section>		
