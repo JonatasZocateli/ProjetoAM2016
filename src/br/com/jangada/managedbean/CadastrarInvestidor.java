@@ -117,7 +117,7 @@ public class CadastrarInvestidor {
 			dao.persist(investidor);
 			investidor = new Investidor();
 			
-			return "confirmacao";
+			return "confirmacaoInvestidor";
 		}catch(Exception e){
 			return "erro";
 		}
@@ -235,7 +235,7 @@ public class CadastrarInvestidor {
 	public String quantidadeValida(Investimento investimento){
 		quantidadeValida = "";
 		
-		if (investimento.getQtdDisponivel() > 0)
+		if ((investimento.getQuantidadeInvestimento() - investimento.getQtdDisponivel()) > 0)
 		  return "cadastroInvestidor";		
 		
 		quantidadeValida = "Desculpe o Investimento Selecionado está esgotado!";
