@@ -11,6 +11,8 @@ import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.criterion.Example;
 import org.hibernate.criterion.MatchMode;
+import org.hibernate.criterion.Projection;
+import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 
 import br.com.jangada.bd.Investimento;
@@ -135,6 +137,7 @@ public class InvestimentoDAO {
 			throw re;
 		}
 	}
+	
 	
 	public List<Investimento> findByConteudo(String pesqField, String pesqValue, int filtroLinha,
 			int filtroConteudo, int filtroExclusivo) {

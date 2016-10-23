@@ -53,42 +53,32 @@
 	                </div>
 				</div>
 				<div class="top-footer">
+					<h:form>
+					
+					<h4 style="color:red">#{incluirInvestidorMB.quantidadeValida}</h4>
+					
 					<div id="owl-brand" class="owl-carousel">
-						<a href="cadastroInvestidor.jsf">
+						<ui:repeat var="investimento" value="#{listarInvestimentoMB.listaInvestimento}">
+
+						<h:commandLink action="#{incluirInvestidorMB.cadastrarInvestidor(investimento)}">
 							<div class="col-sm-4">
 								<div class="box-item">
 									<div class="wrap-img">
 										<img src="images/money.png" />
 									</div>
-									<h3 class="services-heading">$10</h3>
-									<p>Classic</p>
+									<h3 class="services-heading">#{investimento.descricaoInvestimento}</h3>
+									<p>R$ #{investimento.valorInvestimento}</p>
+									<p>Quantidade de Cotas: #{investimento.quantidadeInvestimento}</p>
+									<p>Cotas disponíveis: #{investimento.qtdDisponivel}</p>
+						
 								</div>
-							</div>
-						</a>
-						<a href="cadastroInvestidor.jsf">
-							<div class="col-sm-4">
-								<div class="box-item">
-									
-									<div class="wrap-img">
-										<img src="images/money.png" />
-									</div>							
-									<h3 class="services-heading">$50</h3>
-									<p>Exclusive</p>							
-								</div>
-							</div>
-						</a>
-						<a href="cadastroInvestidor.jsf">	
-							<div class="col-sm-4">
-								<div class="box-item">
-									<div class="wrap-img">
-										<img src="images/money.png" />
-									</div>
-									<h3 class="services-heading">$100</h3>
-									<p>Prime </p>
-								</div>
-							</div>	
-						</a>																																					
+							</div>							
+						</h:commandLink>
+											
+						</ui:repeat>																																					
 					</div>
+						
+					</h:form>
 				</div>
 			</div>
 		</div>		

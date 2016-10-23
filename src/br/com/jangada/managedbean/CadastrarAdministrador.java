@@ -22,7 +22,9 @@ public class CadastrarAdministrador {
 	
 	private Administrador administrador;
 	private List<Administrador> listaAdministrador;
+	private String senha;
 	private String repetirSenha;
+	
 	private String pesquisa;
 	private int filtroPrincipal;
 	private int filtroCondicional;
@@ -35,6 +37,7 @@ public class CadastrarAdministrador {
 	public String getMensagemAdmin() {
 		return mensagemAdmin;
 	}
+	
 
 	public void setMensagemAdmin(String mensagemAdmin) {
 		this.mensagemAdmin = mensagemAdmin;
@@ -130,12 +133,15 @@ public class CadastrarAdministrador {
 	public String incluirAdministrador(){
 		
 		try{
+			verificarSenha();
+			
 			AdministradorDAO dao = new AdministradorDAO();
 			dao.persist(administrador);
 			
 			return listarAdministradores();
 		}catch(Exception e){
-			return "error";
+			mensagemAdmin = "Senhas não correspondem";
+			return "cadastrousuario";
 		}
 				
 	}	
@@ -198,6 +204,11 @@ public class CadastrarAdministrador {
 		
 	}
 	
+	public void verificarSenha() throws ValidatorException{
+		if (!senha.equals(repetirSenha))
+			throw new ValidatorException(new FacesMessage("As senhas digitas estão diferentes!"));
+	}
+	
 	public String pesquisarAdministrador(){
 		try{
 			FiltroPesquisas pesq = new FiltroPesquisas();	
@@ -238,6 +249,16 @@ public class CadastrarAdministrador {
 	    	 
 	    	 return "loginAdm";
 	     }			
+	}
+
+
+	public String getSenha() {
+		return senha;
+	}
+
+
+	public void setSenha(String senha) {
+		this.senha = senha;
 	}
 
 }

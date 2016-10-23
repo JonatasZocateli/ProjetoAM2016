@@ -50,13 +50,12 @@
         <property name="ativoInvestidor" type="java.lang.Character">
             <column name="ativoInvestidor" length="1" />
         </property>
-        <set name="investimentos" table="investidorinvestimento" inverse="false" lazy="true" fetch="select">
-            <key>
-                <column name="idInvestidor" not-null="true" />
-            </key>
-            <many-to-many entity-name="br.com.jangada.bd.Investimento">
-                <column name="idInvestimento" not-null="true" />
-            </many-to-many>
-        </set>
+       <many-to-one name="investimento" class="br.com.jangada.bd.Investimento" fetch="select">
+       		<column name="idInvestimento" not-null="true"/>
+       </many-to-one>               
+       <property name="qtdInvestimento" type="java.lang.Integer">
+            <column name="qtdInvestimento" />
+        </property> 
+        
     </class>
 </hibernate-mapping>

@@ -1,9 +1,18 @@
 package br.com.jangada.managedbean;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+
+import javax.faces.application.FacesMessage;
+import javax.faces.component.UIComponent;
+import javax.faces.component.UIInput;
+import javax.faces.context.FacesContext;
+import javax.faces.validator.ValidatorException;
 
 import br.com.jangada.bd.Investidor;
+import br.com.jangada.bd.Investimento;
 import br.com.jangada.bd.Noticias;
 import br.com.jangada.bo.FiltroPesquisas;
 import br.com.jangada.dao.InvestidorDAO;
@@ -21,6 +30,7 @@ public class CadastrarInvestidor {
 	private int filtroExclusivo;
 	private int filtroLinha = 1;
 	private int tipoPesquisa;
+	private String quantidadeValida;
 	
 	public List getListaInvestidor() {
 		return listaInvestidor;
@@ -88,6 +98,14 @@ public class CadastrarInvestidor {
 		this.investidor = investidor;
 	}
 	
+	public String getQuantidadeValida() {
+		return quantidadeValida;
+	}
+
+	public void setQuantidadeValida(String quantidadeValida) {
+		this.quantidadeValida = quantidadeValida;
+	}
+	
 	public CadastrarInvestidor(){
 		investidor = new Investidor();
 		listaInvestidor = new ArrayList<Investidor>();
@@ -97,12 +115,25 @@ public class CadastrarInvestidor {
 		try{
 			InvestidorDAO dao = new InvestidorDAO();
 			dao.persist(investidor);
+			investidor = new Investidor();
 			
 			return "confirmacao";
 		}catch(Exception e){
 			return "erro";
 		}
 	}
+	
+	public String cadastrarInvestidor(Investimento invest){
+		try{
+			investidor.setInvestimento(invest);
+			String validaQuantidade = quantidadeValida(invest);	
+			
+			return validaQuantidade ;
+		}catch(Exception e){
+			return "erro";
+		}
+	}
+	
 	
 	public String atualizarInvestidor(){
 		try{
@@ -184,6 +215,31 @@ public class CadastrarInvestidor {
 		}catch(Exception e){
 			return "erro";
 		}
+	}
+
+
+	public void validaQuantidadeCota(FacesContext context, UIComponent component, Object value) throws ValidatorException{
+		
+		Integer qtdDig  = (Integer)value;
+		if (qtdDig == 0)
+			throw new ValidatorException(new FacesMessage("Quantidade de cotas adquiridas deve ser Maior que 0!"));
+		else{		  	
+		UIInput fieldQtdDisp = (UIInput)component.getAttributes().get("qtdDisponivel");
+		Integer qtdDisp = (Integer)fieldQtdDisp.getValue();
+		
+		if(qtdDig > qtdDisp)
+			throw new ValidatorException(new FacesMessage("Quantidade de cotas adquiridas não pode ser Maior que a quantidade Disponível!"));
+		}
+	}
+
+	public String quantidadeValida(Investimento investimento){
+		quantidadeValida = "";
+		
+		if (investimento.getQtdDisponivel() > 0)
+		  return "cadastroInvestidor";		
+		
+		quantidadeValida = "Desculpe o Investimento Selecionado está esgotado!";
+		return "escolhaplano";	
 	}
 	
 

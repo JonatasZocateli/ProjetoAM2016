@@ -105,8 +105,12 @@
 					<p>Acompanhe as últimas atualizações em nossa <a href="/ProjetoAM2016/index.jsf#about">home</a></p>
 					<p>Cadastre-se como interessado e seja um cliente preferencial. Garanta seu produto na pré-venda.</p>
 					<p>Ou seja um de nossos investidores e faça parte da mudança quie você quer ver no mundo.</p>
+					<h:form>
 					<a class="btn btn-skin" href="inscreva-se.jsf">Quero ser Cliente</a>
-					<a class="btn btn-skin" href="escolhaplano.jsf">Quero ser Investidor</a>
+					
+						
+						<h:commandLink class="btn btn-skin" value="Quero ser Investidor" action="#{listarInvestimentoMB.selecaoInvestimentos}"/>
+					</h:form>
 				</div>
 			</div>
 		</section>

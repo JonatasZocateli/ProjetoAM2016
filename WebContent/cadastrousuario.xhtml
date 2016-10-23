@@ -104,7 +104,8 @@
 				  <span class="help-block"></span>  
 				  </div>
 				</div>
-				
+				<label  for="textinput"> <h4 style="color:red">
+				     	#{incluirAdministradorMB.mensagemAdmin}	</h4></label>
 				
 				<!-- Text input-->
 				<div class="form-group">
@@ -117,7 +118,8 @@
 				     requiredMessage="Por favor, digite uma senha entre 8 e 12 caracteres"
 				     validatorMessage="a senha informada não está entre 8 e 12 caracteres"
 				     converterMessage=""
-				     class="form-control input-md">				     
+				     class="form-control input-md"
+				    >				     
 				     <f:validateLength minimum="8" maximum="12"/>				     
 				     </h:inputSecret>		  
 				     <h:message for="repetirSenha" style="color:red"/> 	

@@ -10,7 +10,7 @@ public class IncluirImagem {
 		String nomeArquivo = null; 
 		nomeArquivo = getFileName(arquivo);		
 		
-		arquivo.write("C:\\Users\\davi\\Documents\\Projeto AM 2016\\Aplicação Web\\ProjetoAM2016\\WebContent\\images\\"+getFileName(arquivo));	
+		arquivo.write("D:\\ProjetoAM2016\\WebContent\\images\\"+getFileName(arquivo));	
 		
 		return nomeArquivo;
 	}

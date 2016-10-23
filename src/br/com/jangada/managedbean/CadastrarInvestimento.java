@@ -127,6 +127,19 @@ public class CadastrarInvestimento {
 		}
 	}
 	
+	public String selecaoInvestimentos(){
+		try{
+			InvestimentoDAO dao = new InvestimentoDAO();
+			listaInvestimento.clear();
+			listaInvestimento = dao.listaInvestimento();
+			tipoPesquisa = 1;
+			
+			return "escolhaplano";
+		}catch(Exception e){
+			return "erro";
+		}
+	}
+	
 	public String excluirInvestimento(Investimento inv){
 		try{
 			InvestimentoDAO dao = new InvestimentoDAO();
@@ -181,4 +194,6 @@ public class CadastrarInvestimento {
 			return "erro";
 		}
 	}
+	 
 }
+

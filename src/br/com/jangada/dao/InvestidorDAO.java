@@ -11,9 +11,11 @@ import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.criterion.Example;
 import org.hibernate.criterion.MatchMode;
+import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 
 import br.com.jangada.bd.Investidor;
+import br.com.jangada.bd.Investimento;
 import br.com.jangada.bd.Noticias;
 
 /**
@@ -36,11 +38,30 @@ public class InvestidorDAO {
 			throw new IllegalStateException("Could not locate SessionFactory in JNDI");
 		}
 	}
+	
+	public Integer quantidadeUtilizada(Integer idInvestimento){
+		log.debug("finding Noticias instance by example");
+		try {
+			sessionFactory.getCurrentSession().beginTransaction();
+			Criteria criteria = sessionFactory.getCurrentSession().createCriteria(Investidor.class);
+			criteria.setProjection(Projections.sum("tihs.qtdInvestimento"));
+			criteria.add(Restrictions.eq("idInvestimento", idInvestimento));
+			Integer qtd = (Integer) criteria.uniqueResult();
+			
+			log.debug("find by example successful, result size: " + qtd.intValue());
+			return qtd;
+			
+		}catch (RuntimeException re) {
+			log.error("find by example failed", re);
+			throw re;
+		}
+	}
+	
 
 	public void persist(Investidor transientInstance) {
 		log.debug("persisting Investidor instance");
 		try {
-			sessionFactory.getCurrentSession().beginTransaction();
+			sessionFactory.getCurrentSession().beginTransaction();			
 			sessionFactory.getCurrentSession().persist(transientInstance);
 			sessionFactory.getCurrentSession().beginTransaction().commit();
 			
@@ -196,4 +217,6 @@ public class InvestidorDAO {
 			throw re;
 		}
 	}
+	
+	
 }

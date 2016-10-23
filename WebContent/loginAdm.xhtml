@@ -59,7 +59,7 @@
 					  <div class="col-md-4">				  
 					  
 					  <h:inputText 
-				     	value="#{incluirAdministradorMB.administrador.loginAdministrador}"
+				     	value="#{listarAdministradorMB.administrador.loginAdministrador}"
 				     	id="loginAdministrador"
 				     	required="true" 
 				     	requiredMessage="Por favor, informe o Login!"				     	 
@@ -79,7 +79,7 @@
 					  <label class="col-md-4 control-label" for="passwordinput">Senha</label>
 					  <div class="col-md-4">
 					    
-					     <h:inputSecret value="#{incluirAdministradorMB.administrador.senhaAdministrador}"
+					     <h:inputSecret value="#{listarAdministradorMB.administrador.senhaAdministrador}"
 				     	id="senhaAdministrador"
 				     	required="true"	
 				     	requiredMessage="Por favor, informe a Senha!"				     	 
@@ -93,7 +93,7 @@
 					  <label class="col-md-4 control-label" for="textinput"></label>  
 					  <div class="col-md-4">
 					  <!--<a class="btn btn-skin" href="listagem.jsf">Login</a>-->
-					  <h:commandButton value="Login" action="#{incluirAdministradorMB.validarLogin}"  /> 
+					  <h:commandButton value="Login" action="#{listarAdministradorMB.validarLogin}"  /> 
 					  <span class="help-block"></span>  
 					  </div>
 					</div>

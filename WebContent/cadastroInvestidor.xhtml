@@ -56,8 +56,54 @@
 				
 				<!-- Text input-->
 				<div class="form-group">
+				  <label class="col-md-4 control-label" for="textinput">Investimento Selecionado</label>  
+				  
+				  <div class="col-md-6">
+				  <h:outputText value="#{incluirInvestidorMB.investidor.investimento.descricaoInvestimento}"
+				 	 id="descricaoInvestimento" 
+					  class="form-control input-md">					  			  
+				  </h:outputText>    
+				  <span class="help-block"></span>  
+				  </div>
+				</div>
+				
+				<div class="form-group">
+				  <label class="col-md-4 control-label" for="textinput">Quantidade de cotas Disponíveis</label>  
+				  
+				  <div class="col-md-1">
+				  <h:outputText value="#{incluirInvestidorMB.investidor.investimento.qtdDisponivel}"
+				      class="form-control input-md">					  			  
+				  </h:outputText>  
+				  <span class="help-block"></span>  
+				  </div>
+				</div>
+			
+				
+				<!-- Text input-->
+				<div class="form-group">
+				  <label class="col-md-4 control-label" for="textinput">Quantidade de Cotas Adquiridas</label>  
+				  <div class="col-md-1">
+				  <h:inputText 
+				     value="#{incluirInvestidorMB.investidor.qtdInvestimento}"
+				     id="qtdInvestimento" 
+				     required="true"
+				     requiredMessage="Por favor, preencha a quantidade de cotas"
+				     validatorMessage="Quantidade de cotas deve ser entre 1 e #{incluirInvestidorMB.investidor.investimento.qtdDisponivel}!"
+				     converterMessage="Quantidade de cotas só aceita números!"
+				     class="form-control input-md">
+				     <f:convertNumber type="number"/>0
+				     <f:validateLongRange minimum="1" maximum="#{incluirInvestidorMB.investidor.investimento.qtdDisponivel}"/>			     
+				     </h:inputText>				     	  
+				     
+				  <span class="help-block"></span>  
+				  </div>
+				  <h:message for="qtdInvestimento" style="color:red" class="col-md-6"/> 
+				</div>
+				
+				<!-- Text input-->
+				<div class="form-group">
 				  <label class="col-md-4 control-label" for="textinput">Nome Completo</label>  
-				  <div class="col-md-4">				  
+				  <div class="col-md-6">				  
 				  <h:inputText 
 				     value="#{incluirInvestidorMB.investidor.nomeInvestidor}"
 				     id="nomeInvestidor" 
@@ -73,7 +119,7 @@
 				<!-- Text input-->
 				<div class="form-group">
 				  <label class="col-md-4 control-label" for="textinput">Empresa</label>  
-				  <div class="col-md-4">
+				  <div class="col-md-6">
 				  <h:inputText 
 				     value="#{incluirInvestidorMB.investidor.nomeEmpresaInvestidor}"
 				     id="nomeEmpresaInvestidor" 
@@ -105,7 +151,7 @@
 				<!-- Text input-->
 				<div class="form-group">
 				  <label class="col-md-4 control-label" for="textinput">Data de Nascimento</label>  
-				  <div class="col-md-4">
+				  <div class="col-md-2">
 				  	 <h:inputText
 				     	value="#{incluirInvestidorMB.investidor.nascimentoInvestidor}"
 				     	id="nascimentoInvestidor"	
@@ -144,7 +190,7 @@
 				<!-- Text input-->
 				<div class="form-group">
 				  <label class="col-md-4 control-label" for="textinput">Email</label>  
-				  <div class="col-md-4">
+				  <div class="col-md-6">
 				  <h:inputText 
 				     value="#{incluirInvestidorMB.investidor.emailInvestidor}"
 				     id="emailInvestidor" 
@@ -160,7 +206,7 @@
 				<!-- Text input-->
 				<div class="form-group">
 				  <label class="col-md-4 control-label" for="textinput">CEP</label>  
-				  <div class="col-md-4">
+				  <div class="col-md-2">
 				  <h:inputText 
 				     value="#{incluirInvestidorMB.investidor.cepInvestidor}"
 				     id="cepInvestidor" 
@@ -181,7 +227,7 @@
 				<!-- Text input-->
 				<div class="form-group">
 				  <label class="col-md-4 control-label" for="textinput">Logradouro</label>  
-				  <div class="col-md-4">
+				  <div class="col-md-6">
 				  <h:inputText 
 				     value="#{incluirInvestidorMB.investidor.logradouroInvestidor}"
 				     id="logradouroInvestidor" 
@@ -221,7 +267,7 @@
 				<!-- Text input-->
 				<div class="form-group">
 				  <label class="col-md-4 control-label" for="textinput">Estado</label>  
-				  <div class="col-md-4">
+				  <div class="col-md-1">
 				  <h:inputText 
 				     value="#{incluirInvestidorMB.investidor.estadoInvestidor}"
 				     id="estadoInvestidor" 
